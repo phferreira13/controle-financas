@@ -5,6 +5,12 @@ VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controle.Financas.Api", "Controle.Financas.Api\Controle.Financas.Api.csproj", "{A0A62F16-519F-482E-B35E-F8BA3482D27C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{1BFD7D6E-D359-4631-ABC3-B1EE1C661104}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{8B7681E3-790B-428F-9D55-A6EA636B63AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controle.Financas.Domain", "Controle.Financas.Domain\Controle.Financas.Domain.csproj", "{849FA833-D4A3-44B4-9105-57E8DEA46AE3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +21,17 @@ Global
 		{A0A62F16-519F-482E-B35E-F8BA3482D27C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0A62F16-519F-482E-B35E-F8BA3482D27C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0A62F16-519F-482E-B35E-F8BA3482D27C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{849FA833-D4A3-44B4-9105-57E8DEA46AE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{849FA833-D4A3-44B4-9105-57E8DEA46AE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{849FA833-D4A3-44B4-9105-57E8DEA46AE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{849FA833-D4A3-44B4-9105-57E8DEA46AE3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A0A62F16-519F-482E-B35E-F8BA3482D27C} = {1BFD7D6E-D359-4631-ABC3-B1EE1C661104}
+		{849FA833-D4A3-44B4-9105-57E8DEA46AE3} = {8B7681E3-790B-428F-9D55-A6EA636B63AE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {49EC8529-67B7-42E6-A90C-BBE44BAF066C}
