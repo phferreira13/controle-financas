@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra", "Infra", "{616B45C6
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Buiseness", "Buiseness", "{EADC6455-B599-4543-8A7B-16C0F2D74666}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controle.Financas.Data", "Controle.Financas.Data\Controle.Financas.Data.csproj", "{A92291FB-BC8F-4526-AA79-F987642856D4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controle.Financas.EFConfiguration", "Controle.Financas.Data\Controle.Financas.EFConfiguration.csproj", "{A92291FB-BC8F-4526-AA79-F987642856D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

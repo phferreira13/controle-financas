@@ -3,11 +3,19 @@ using Controle.Financas.Domain.Models.Base;
 
 namespace Controle.Financas.Domain.Models
 {
-    public class User(AddUserDTO adicionarUsuarioDTO) : EntityBase
+    public class User : EntityBase
     {
-        public string FullName { get; private set; } = adicionarUsuarioDTO.FullName;
-        public string Email { get; private set; } = adicionarUsuarioDTO.Email;
-        public string Password { get; private set; } = adicionarUsuarioDTO.Password;
+        public string FullName { get; private set; }
+        public string Email { get; private set; }
+        public string Password { get; private set; }
+
+        public User() { }
+        public User(AddUserDTO addUserDTO)
+        {
+            FullName = addUserDTO.FullName;
+            Email = addUserDTO.Email;
+            Password = addUserDTO.Password;
+        }
 
         public void Update(UpdateUserDTO updateUserDTO)
         {

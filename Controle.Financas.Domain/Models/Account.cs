@@ -3,13 +3,23 @@ using Controle.Financas.Domain.Models.Base;
 
 namespace Controle.Financas.Domain.Models
 {
-    public class Account(AddAccountDTO addAccountDTO) : UserEntityBase(addAccountDTO.UserId)
+    public class Account : UserEntityBase
     {
-        public string Name { get; private set; } = addAccountDTO.Name;
-        public decimal InitialBalance { get; private set; } = addAccountDTO.InitialBalance;
-        public decimal ActualBalance { get; private set; } = addAccountDTO.ActualBalance;
-        public int AccountTypeId { get; private set; } = addAccountDTO.AccountTypeId;
+        public string Name { get; private set; }
+        public decimal InitialBalance { get; private set; }
+        public decimal ActualBalance { get; private set; }
+        public int AccountTypeId { get; private set; }
         public virtual AccountType? AccountType { get; private set; }
+
+        public Account() { }
+
+        public Account(AddAccountDTO addAccountDTO) : base(addAccountDTO.UserId)
+        {
+            Name = addAccountDTO.Name;
+            InitialBalance = addAccountDTO.InitialBalance;
+            ActualBalance = addAccountDTO.ActualBalance;
+            AccountTypeId = addAccountDTO.AccountTypeId;
+        }
 
         public void Update(UpdateAccountDTO updateAccountDTO)
         {

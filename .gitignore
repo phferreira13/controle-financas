@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/Controle.Financas.Api/LocalDatabase.db
+/Controle.Financas.Api/LocalDatabase.db-shm
+/Controle.Financas.Api/LocalDatabase.db-wal
