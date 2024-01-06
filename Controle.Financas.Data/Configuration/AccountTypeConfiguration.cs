@@ -1,9 +1,9 @@
-﻿using Controle.Financas.Data.Configuration.Base;
+﻿using Controle.Financas.Infra.Configuration.Base;
 using Controle.Financas.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Controle.Financas.Data.Configuration
+namespace Controle.Financas.Infra.Configuration
 {
     public class AccountTypeConfiguration : UserEntityBaseConfiguration<AccountType>
     {

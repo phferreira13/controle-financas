@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Controle.Financas.Data.Contexts
+namespace Controle.Financas.Infra.Contexts
 {
     public class ControleFinancasContext(DbContextOptions<ControleFinancasContext> options) : DbContext(options)
     {

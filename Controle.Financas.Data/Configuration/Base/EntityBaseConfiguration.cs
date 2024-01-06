@@ -1,4 +1,4 @@
-﻿namespace Controle.Financas.Data.Configuration.Base
+﻿namespace Controle.Financas.Infra.Configuration.Base
 {
     public abstract class EntityBaseConfiguration<T> : IEntityTypeConfiguration<T> where T : EntityBase
     {

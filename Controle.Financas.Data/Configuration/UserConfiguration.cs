@@ -1,4 +1,4 @@
-﻿namespace Controle.Financas.Data.Configuration
+﻿namespace Controle.Financas.Infra.Configuration
 {
     public class UserConfiguration : EntityBaseConfiguration<User>
     {
