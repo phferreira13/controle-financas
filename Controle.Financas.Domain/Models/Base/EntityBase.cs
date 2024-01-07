@@ -9,14 +9,11 @@ namespace Controle.Financas.Domain.Models.Base
         public DateTime? UpdatedDate { get; private set; }
         public EStatus Status { get; private set; } = EStatus.Active;
 
-        private void SetStatus(EStatus status)
+        public void SetStatus(EStatus status)
         {
             Status = status;
             UpdateDate();
         }
         protected void UpdateDate() => UpdatedDate = DateTime.Now;
-        public void Delete() => SetStatus(EStatus.Deleted);
-        public void Inactivate() => SetStatus(EStatus.Inactive);
-        public void Activate() => SetStatus(EStatus.Active);
     }
 }

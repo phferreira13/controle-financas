@@ -1,6 +1,9 @@
 ﻿using Controle.Financas.Domain.DTOs.Users;
+using Controle.Financas.Domain.Enums;
 using Controle.Financas.Domain.Interfaces.Repositories;
 using Controle.Financas.Infra.Contexts;
+using Controle.Financas.Shared.Enums;
+using Controle.Financas.Shared.Services;
 
 namespace Controle.Financas.EFConfiguration.Repositories
 {
@@ -14,27 +17,27 @@ namespace Controle.Financas.EFConfiguration.Repositories
             _context = context;
         }
 
-        public async Task<User?> GetUserById(int id)
+        public async Task<User?> GetUserByIdAsync(int id)
         {
             return await _dbSet.FindAsync(id);
         }
 
-        public async Task<User?> GetUserByEmail(string email)
+        public async Task<User?> GetUserByEmailAsync(string email)
         {
             return await _dbSet.FirstOrDefaultAsync(u => u.Email == email);
         }
 
-        public async Task<User?> GetUserByEmailAndPassword(string email, string password)
+        public async Task<User?> GetUserByEmailAndPasswordAsync(string email, string password)
         {
             return await _dbSet.FirstOrDefaultAsync(u => u.Email == email && u.Password == password);
         }
 
-        public async Task<IEnumerable<User>> GetAllUsers()
+        public async Task<IEnumerable<User>> GetAllUsersAsync()
         {
             return await _dbSet.ToListAsync();
         }
 
-        public async Task<User> InsertUser(AddUserDTO user)
+        public async Task<User> InsertUserAsync(AddUserDTO user)
         {
             var newUser = new User(user);
             await _dbSet.AddAsync(newUser);
@@ -42,21 +45,29 @@ namespace Controle.Financas.EFConfiguration.Repositories
             return newUser;
         }
 
-        public async Task<User> UpdateUser(UpdateUserDTO user)
+        public async Task<User> UpdateUserAsync(UpdateUserDTO user)
         {
-            var updatedUser = await _dbSet.FindAsync(user.Id) ?? throw new Exception("User not found");
+            var updatedUser = await _dbSet.FindAsync(user.Id) 
+                ?? throw ErrorMessageService.GetException(EErrorType.NotFound, "User");
             updatedUser.Update(user);
             _dbSet.Update(updatedUser);
             await _context.SaveChangesAsync();
             return updatedUser;
         }
 
-        public async Task DeleteUser(int id)
+        public async Task DeleteUserAsync(int id)
         {
-            var user = await _dbSet.FindAsync(id) ?? throw new Exception("User not found");
-            user.Delete();
+            await ChangeStatusAsync(id, EStatus.Deleted);
+        }
+
+        public async Task<User> ChangeStatusAsync(int id, EStatus status)
+        {
+            var user = await _dbSet.FindAsync(id)
+                ?? throw ErrorMessageService.GetException(EErrorType.NotFound, "User");
+            user.SetStatus(status);
             _dbSet.Update(user);
             await _context.SaveChangesAsync();
+            return user;
         }
     }
 }

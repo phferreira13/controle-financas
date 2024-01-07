@@ -1,6 +1,9 @@
 ﻿using Controle.Financas.Domain.DTOs.AccountTypes;
+using Controle.Financas.Domain.Enums;
 using Controle.Financas.Domain.Interfaces.Repositories;
 using Controle.Financas.Infra.Contexts;
+using Controle.Financas.Shared.Enums;
+using Controle.Financas.Shared.Services;
 
 namespace Controle.Financas.EFConfiguration.Repositories
 {
@@ -44,7 +47,8 @@ namespace Controle.Financas.EFConfiguration.Repositories
 
         public async Task<AccountType> UpdateAsync(UpdateAccountTypeDTO accountType)
         {
-            var updatedAccountType = await _dbSet.FindAsync(accountType.Id) ?? throw new Exception("AccountType not found");
+            var updatedAccountType = await _dbSet.FindAsync(accountType.Id) 
+                ?? throw ErrorMessageService.GetException(EErrorType.NotFound, "AccountType");
             updatedAccountType.Update(accountType);
             _dbSet.Update(updatedAccountType);
             await _context.SaveChangesAsync();
@@ -53,8 +57,9 @@ namespace Controle.Financas.EFConfiguration.Repositories
 
         public async Task DeleteAsync(int id)
         {
-            var accountType = await _dbSet.FindAsync(id) ?? throw new Exception("AccountType not found");
-            accountType.Delete();
+            var accountType = await _dbSet.FindAsync(id)
+                ?? throw ErrorMessageService.GetException(EErrorType.NotFound, "AccountType");
+            accountType.SetStatus(EStatus.Deleted);
             _dbSet.Update(accountType);
             await _context.SaveChangesAsync();
         }
