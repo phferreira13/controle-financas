@@ -1,13 +1,8 @@
 ﻿using Controle.Financas.Infra.Contexts;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Controle.Financas.EFConfiguration
+namespace Controle.Financas.EFConfiguration.Startups
 {
     public static class EntityFrameworkStartup
     {
@@ -17,6 +12,7 @@ namespace Controle.Financas.EFConfiguration
             {
                 options.UseSqlite(configuration.GetConnectionString("DefaultConnection"));
             });
+            services.AddRepositories();
         }
     }
 }

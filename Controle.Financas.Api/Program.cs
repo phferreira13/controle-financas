@@ -1,4 +1,4 @@
-using Controle.Financas.EFConfiguration;
+using Controle.Financas.EFConfiguration.Startups;
 using Controle.Financas.Infra.Contexts;
 using Microsoft.EntityFrameworkCore;
 
