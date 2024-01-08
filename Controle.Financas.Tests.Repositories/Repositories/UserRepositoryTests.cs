@@ -11,27 +11,20 @@ using Controle.Financas.Tests.Shared.Factories.Users;
 using Controle.Financas.Domain.Enums;
 using Controle.Financas.Shared.Services;
 using Controle.Financas.Shared.Enums;
+using Controle.Financas.Tests.Repositories.Repositories.Base;
 
 namespace Controle.Financas.EFConfiguration.Repositories.Tests
 {
     [TestClass]
-    public class UserRepositoryTests
+    public class UserRepositoryTests : BaseRepositoryTest
     {
         private UserRepository _userRepository;
 
         [TestInitialize]
         public void ResetDatabase()
         {
-            var options = new DbContextOptionsBuilder<ControleFinancasContext>()
-                .UseInMemoryDatabase("DataSource=:memory:")
-                .EnableDetailedErrors()
-                .EnableSensitiveDataLogging()
-                .Options;
-            var context = new ControleFinancasContext(options);
-            context.Database.EnsureDeleted();
-            context.Database.EnsureCreated();
-
-            _userRepository = new UserRepository(context);
+            ConfigureContext();
+            _userRepository = new UserRepository(_controleFinancasContext);
         }
 
         [TestMethod("GetUserByIdAsync - Should return not null")]
@@ -272,6 +265,26 @@ namespace Controle.Financas.EFConfiguration.Repositories.Tests
             {
                 // Act
                 await _userRepository.DeleteUserAsync(user.Id);
+            }
+            catch (Exception ex)
+            {
+                // Assert
+                Assert.AreEqual(ErrorMessageService.GetErrorMessage(EErrorType.NotFound, "User"), ex.Message);
+            }
+        }
+
+        [TestMethod("ChangeStatusAsync - Should return exception")]
+        [TestCategory("Exception")]
+        public async Task ChangeStatus_ShouldReturnException()
+        {
+            // Arrange
+            var factory = new UpdateUserDtoFactory();
+            var user = factory.Build();
+
+            try
+            {
+                // Act
+                await _userRepository.ChangeStatusAsync(user.Id, EStatus.Inactive);
             }
             catch (Exception ex)
             {

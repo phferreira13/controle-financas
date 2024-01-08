@@ -7,11 +7,16 @@ namespace Controle.Financas.Domain.Models
     {
         public string Name { get; private set; }
         public decimal InitialBalance { get; private set; }
-        public decimal ActualBalance { get; private set; }
+        public decimal ActualBalance { get; private set; } = 0;
         public int AccountTypeId { get; private set; }
         public virtual AccountType? AccountType { get; private set; }
 
-        public Account() { }
+        private Account(string name, decimal initialBalance, int accountTypeId)
+        {
+            Name = name;
+            InitialBalance = initialBalance;
+            AccountTypeId = accountTypeId;
+        }
 
         public Account(AddAccountDTO addAccountDTO) : base(addAccountDTO.UserId)
         {

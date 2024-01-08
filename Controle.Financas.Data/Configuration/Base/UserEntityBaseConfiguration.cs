@@ -6,8 +6,7 @@
         {
             base.Configure(builder);
 
-            builder.Property(x => x.UserId)
-                .IsRequired();
+            builder.Property(x => x.UserId);
 
             builder.HasOne(x => x.User)
                 .WithMany()

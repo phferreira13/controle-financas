@@ -1,4 +1,5 @@
 ﻿using Controle.Financas.Domain.DTOs.AccountTypes;
+using Controle.Financas.Domain.Enums;
 using Controle.Financas.Domain.Models;
 
 namespace Controle.Financas.Domain.Interfaces.Repositories
@@ -12,6 +13,7 @@ namespace Controle.Financas.Domain.Interfaces.Repositories
         Task<AccountType> AddAsync(AddAccountTypeDTO accountType);
         Task<AccountType> UpdateAsync(UpdateAccountTypeDTO accountType);
         Task DeleteAsync(int id);
+        Task<AccountType> ChangeStatus(int id, EStatus status);
 
     }
 }

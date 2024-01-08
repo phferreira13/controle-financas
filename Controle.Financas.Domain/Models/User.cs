@@ -9,7 +9,13 @@ namespace Controle.Financas.Domain.Models
         public string Email { get; private set; }
         public string Password { get; private set; }
 
-        public User() { }
+        private User(string fullName, string email, string password)
+        {
+            FullName = fullName;
+            Email = email;
+            Password = password;
+        }
+
         public User(AddUserDTO addUserDTO)
         {
             FullName = addUserDTO.FullName;

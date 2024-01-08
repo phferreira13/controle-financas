@@ -57,11 +57,17 @@ namespace Controle.Financas.EFConfiguration.Repositories
 
         public async Task DeleteAsync(int id)
         {
+            await ChangeStatus(id, EStatus.Deleted);
+        }
+
+        public async Task<AccountType> ChangeStatus(int id, EStatus status)
+        {
             var accountType = await _dbSet.FindAsync(id)
                 ?? throw ErrorMessageService.GetException(EErrorType.NotFound, "AccountType");
-            accountType.SetStatus(EStatus.Deleted);
+            accountType.SetStatus(status);
             _dbSet.Update(accountType);
             await _context.SaveChangesAsync();
+            return accountType;
         }
     }
 }

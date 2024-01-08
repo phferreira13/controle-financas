@@ -11,6 +11,11 @@
                 .IsRequired()
                 .HasMaxLength(100);
 
+            builder.Property(x => x.IsDefault)
+                .HasDefaultValue(false)
+                .IsRequired();
+
+
             builder.HasMany(x => x.Accounts)
                 .WithOne(x => x.AccountType)
                 .HasForeignKey(x => x.AccountTypeId)
