@@ -37,7 +37,7 @@ namespace Controle.Financas.EFConfiguration.Repositories
             return await _dbSet.ToListAsync();
         }
 
-        public async Task<User> InsertUserAsync(AddUserDTO user)
+        public async Task<User> InsertUserAsync(AddUserDto user)
         {
             var newUser = new User(user);
             await _dbSet.AddAsync(newUser);
@@ -45,7 +45,7 @@ namespace Controle.Financas.EFConfiguration.Repositories
             return newUser;
         }
 
-        public async Task<User> UpdateUserAsync(UpdateUserDTO user)
+        public async Task<User> UpdateUserAsync(UpdateUserDto user)
         {
             var updatedUser = await _dbSet.FindAsync(user.Id) 
                 ?? throw ErrorMessageService.GetException(EErrorType.NotFound, "User");

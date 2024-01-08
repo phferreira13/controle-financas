@@ -1,6 +1,6 @@
 ﻿namespace Controle.Financas.Domain.DTOs.Account
 {
-    public class AddAccountDTO
+    public class AddAccountDto
     {
         public required string Name { get; set; }
         public decimal InitialBalance { get; set; } = 0;

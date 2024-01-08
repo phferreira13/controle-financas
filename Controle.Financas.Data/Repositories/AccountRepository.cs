@@ -37,7 +37,7 @@ namespace Controle.Financas.EFConfiguration.Repositories
             return await _dbSet.Where(a => a.UserId == userId).ToListAsync();
         }
 
-        public async Task<Account> AddAsync(AddAccountDTO account)
+        public async Task<Account> AddAsync(AddAccountDto account)
         {
             var newAccount = new Account(account);
             await _dbSet.AddAsync(newAccount);
@@ -45,7 +45,7 @@ namespace Controle.Financas.EFConfiguration.Repositories
             return newAccount;
         }
 
-        public async Task<Account> UpdateAsync(UpdateAccountDTO account)
+        public async Task<Account> UpdateAsync(UpdateAccountDto account)
         {
             var updatedAccount = await _dbSet.FindAsync(account.Id) ?? throw ErrorMessageService.GetException(EErrorType.NotFound, "Account");
             updatedAccount.Update(account);

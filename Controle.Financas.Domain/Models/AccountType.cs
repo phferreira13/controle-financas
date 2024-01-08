@@ -16,18 +16,18 @@ namespace Controle.Financas.Domain.Models
             IsDefault = isDefault;
         }
 
-        public AccountType(AddAccountTypeDTO addAccountTypeDTO) : base(addAccountTypeDTO.UserId)
+        public AccountType(AddAccountTypeDto addAccountTypeDTO) : base(addAccountTypeDTO.UserId)
         {
             Name = addAccountTypeDTO.Name;
         }
 
-        public AccountType(AddDefaultAccountTypeDTO addDefaultAccountTypeDTO)
+        public AccountType(AddDefaultAccountTypeDto addDefaultAccountTypeDTO)
         {
             Name = addDefaultAccountTypeDTO.Name;
             IsDefault = addDefaultAccountTypeDTO.IsDefault;
         }
 
-        public void Update(UpdateAccountTypeDTO updateAccountTypeDTO)
+        public void Update(UpdateAccountTypeDto updateAccountTypeDTO)
         {
             Name = updateAccountTypeDTO.Name;
             UpdateDate();

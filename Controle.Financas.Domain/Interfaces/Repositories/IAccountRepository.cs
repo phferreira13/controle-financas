@@ -9,8 +9,8 @@ namespace Controle.Financas.Domain.Interfaces.Repositories
         Task<Account?> GetByNameAsync(string name);
         Task<IEnumerable<Account>> GetAllAsync();
         Task<IEnumerable<Account>> GetAllByUserIdAsync(int userId);
-        Task<Account> AddAsync(AddAccountDTO account);
-        Task<Account> UpdateAsync(UpdateAccountDTO account);
+        Task<Account> AddAsync(AddAccountDto account);
+        Task<Account> UpdateAsync(UpdateAccountDto account);
         Task DeleteAsync(int id);
     }
 }

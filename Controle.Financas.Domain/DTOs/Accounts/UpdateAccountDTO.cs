@@ -1,6 +1,6 @@
 ﻿namespace Controle.Financas.Domain.DTOs.Account
 {
-    public class UpdateAccountDTO : UpdateDTO
+    public class UpdateAccountDto : UpdateDto
     {
         public required int Id { get; set; }
         public required string Name { get; set; }

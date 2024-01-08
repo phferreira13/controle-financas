@@ -2,11 +2,11 @@
 {
     public class AddUserDtoFactory
     {
-        private readonly Faker<AddUserDTO> _faker;
+        private readonly Faker<AddUserDto> _faker;
 
         public AddUserDtoFactory()
         {
-            _faker = new Faker<AddUserDTO>("pt_BR")
+            _faker = new Faker<AddUserDto>("pt_BR")
                 .RuleFor(x => x.FullName, f => f.Person.FullName)
                 .RuleFor(x => x.Email, f => f.Person.Email)
                 .RuleFor(x => x.Password, f => f.Internet.Password());
@@ -30,12 +30,12 @@
             return this;
         }
 
-        public AddUserDTO Build()
+        public AddUserDto Build()
         {
             return _faker.Generate();
         }
 
-        public IEnumerable<AddUserDTO> BuildList(int count)
+        public IEnumerable<AddUserDto> BuildList(int count)
         {
             return _faker.Generate(count);
         }

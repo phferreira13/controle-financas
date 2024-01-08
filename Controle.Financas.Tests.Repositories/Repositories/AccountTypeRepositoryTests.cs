@@ -3,7 +3,7 @@ using Controle.Financas.EFConfiguration.Repositories;
 using Controle.Financas.Shared.Enums;
 using Controle.Financas.Shared.Services;
 using Controle.Financas.Tests.Repositories.Repositories.Base;
-using Controle.Financas.Tests.Shared.Factories.AccountType;
+using Controle.Financas.Tests.Shared.Factories.AccountTypes;
 using System;
 using System.Collections.Generic;
 using System.Linq;

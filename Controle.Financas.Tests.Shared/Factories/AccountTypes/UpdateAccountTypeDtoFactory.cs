@@ -5,15 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Controle.Financas.Tests.Shared.Factories.AccountType
+namespace Controle.Financas.Tests.Shared.Factories.AccountTypes
 {
     public class UpdateAccountTypeDtoFactory
     {
-        private readonly Faker<UpdateAccountTypeDTO> _faker;
+        private readonly Faker<UpdateAccountTypeDto> _faker;
 
         public UpdateAccountTypeDtoFactory()
         {
-            _faker = new Faker<UpdateAccountTypeDTO>("pt_BR")
+            _faker = new Faker<UpdateAccountTypeDto>("pt_BR")
                 .RuleFor(x => x.Name, f => f.Name.JobTitle())
                 .RuleFor(x => x.Id, f => f.Random.Int(min: 1));
         }
@@ -30,12 +30,12 @@ namespace Controle.Financas.Tests.Shared.Factories.AccountType
             return this;
         }
 
-        public UpdateAccountTypeDTO Generate()
+        public UpdateAccountTypeDto Generate()
         {
             return _faker.Generate();
         }
 
-        public IEnumerable<UpdateAccountTypeDTO> Generate(int quantity)
+        public IEnumerable<UpdateAccountTypeDto> Generate(int quantity)
         {
             return _faker.Generate(quantity);
         }

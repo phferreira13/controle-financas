@@ -18,7 +18,7 @@ namespace Controle.Financas.Domain.Models
             AccountTypeId = accountTypeId;
         }
 
-        public Account(AddAccountDTO addAccountDTO) : base(addAccountDTO.UserId)
+        public Account(AddAccountDto addAccountDTO) : base(addAccountDTO.UserId)
         {
             Name = addAccountDTO.Name;
             InitialBalance = addAccountDTO.InitialBalance;
@@ -26,7 +26,7 @@ namespace Controle.Financas.Domain.Models
             AccountTypeId = addAccountDTO.AccountTypeId;
         }
 
-        public void Update(UpdateAccountDTO updateAccountDTO)
+        public void Update(UpdateAccountDto updateAccountDTO)
         {
             Name = updateAccountDTO.Name;
             InitialBalance = updateAccountDTO.InitialBalance;

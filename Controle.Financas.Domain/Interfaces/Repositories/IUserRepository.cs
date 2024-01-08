@@ -10,8 +10,8 @@ namespace Controle.Financas.Domain.Interfaces.Repositories
         Task<User?> GetUserByEmailAsync(string email);
         Task<User?> GetUserByEmailAndPasswordAsync(string email, string password);
         Task<IEnumerable<User>> GetAllUsersAsync();
-        Task<User> InsertUserAsync(AddUserDTO user);
-        Task<User> UpdateUserAsync(UpdateUserDTO user);
+        Task<User> InsertUserAsync(AddUserDto user);
+        Task<User> UpdateUserAsync(UpdateUserDto user);
         Task DeleteUserAsync(int id);
         Task<User> ChangeStatusAsync(int id, EStatus status);
     }

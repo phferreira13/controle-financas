@@ -16,14 +16,14 @@ namespace Controle.Financas.Domain.Models
             Password = password;
         }
 
-        public User(AddUserDTO addUserDTO)
+        public User(AddUserDto addUserDTO)
         {
             FullName = addUserDTO.FullName;
             Email = addUserDTO.Email;
             Password = addUserDTO.Password;
         }
 
-        public void Update(UpdateUserDTO updateUserDTO)
+        public void Update(UpdateUserDto updateUserDTO)
         {
             FullName = updateUserDTO.FullName;
             Email = updateUserDTO.Email;
