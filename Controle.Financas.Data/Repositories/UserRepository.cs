@@ -7,65 +7,63 @@ using Controle.Financas.Shared.Services;
 
 namespace Controle.Financas.EFConfiguration.Repositories
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository(ControleFinancasContext context) : IUserRepository
     {
-        private readonly DbSet<User> _dbSet;
-        private readonly ControleFinancasContext _context;
-        public UserRepository(ControleFinancasContext context)
-        {
-            _dbSet = context.Set<User>();
-            _context = context;
-        }
+        private readonly DbSet<User> Users = context.Users;
+        private readonly ControleFinancasContext _context = context;
 
         public async Task<User?> GetUserByIdAsync(int id)
         {
-            return await _dbSet.FindAsync(id);
+            return await Users.FindAsync(id);
         }
 
         public async Task<User?> GetUserByEmailAsync(string email)
         {
-            return await _dbSet.FirstOrDefaultAsync(u => u.Email == email);
+            return await Users.FirstOrDefaultAsync(u => u.Email == email);
         }
 
         public async Task<User?> GetUserByEmailAndPasswordAsync(string email, string password)
         {
-            return await _dbSet.FirstOrDefaultAsync(u => u.Email == email && u.Password == password);
+            return await Users.FirstOrDefaultAsync(u => u.Email == email && u.Password == password);
         }
 
-        public async Task<IEnumerable<User>> GetAllUsersAsync()
+        public async Task<IEnumerable<User>> GetAllUsersAsync(bool ingnoreDeleted = true)
         {
-            return await _dbSet.ToListAsync();
+            var query = Users.AsQueryable();
+            if (ingnoreDeleted)
+                query = query.Where(u => u.Status != EStatus.Deleted);
+            return await query.ToListAsync();
         }
 
         public async Task<User> InsertUserAsync(AddUserDto user)
         {
             var newUser = new User(user);
-            await _dbSet.AddAsync(newUser);
+            await Users.AddAsync(newUser);
             await _context.SaveChangesAsync();
             return newUser;
         }
 
         public async Task<User> UpdateUserAsync(UpdateUserDto user)
         {
-            var updatedUser = await _dbSet.FindAsync(user.Id) 
+            var updatedUser = await Users.FindAsync(user.Id) 
                 ?? throw ErrorMessageService.GetException(EErrorType.NotFound, "User");
             updatedUser.Update(user);
-            _dbSet.Update(updatedUser);
+            Users.Update(updatedUser);
             await _context.SaveChangesAsync();
             return updatedUser;
         }
 
-        public async Task DeleteUserAsync(int id)
+        public async Task<User> DeleteUserAsync(int id)
         {
-            await ChangeStatusAsync(id, EStatus.Deleted);
+            return await ChangeStatusAsync(id, EStatus.Deleted);
         }
 
         public async Task<User> ChangeStatusAsync(int id, EStatus status)
         {
-            var user = await _dbSet.FindAsync(id)
+            var user = await Users.FindAsync(id)
                 ?? throw ErrorMessageService.GetException(EErrorType.NotFound, "User");
             user.SetStatus(status);
-            _dbSet.Update(user);
+            Users.Update(user);
             await _context.SaveChangesAsync();
             return user;
         }

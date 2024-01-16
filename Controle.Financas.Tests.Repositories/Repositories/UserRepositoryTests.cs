@@ -145,8 +145,8 @@ namespace Controle.Financas.EFConfiguration.Repositories.Tests
             var created = _userRepository.InsertUserAsync(user).Result;
 
             // Act
-            await _userRepository.DeleteUserAsync(created.Id);
-            var deleted = await _userRepository.GetUserByIdAsync(created.Id);
+            
+            var deleted = await _userRepository.DeleteUserAsync(created.Id);
 
             // Assert
             Assert.IsNotNull(deleted);

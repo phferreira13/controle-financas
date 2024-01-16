@@ -15,9 +15,8 @@ namespace Controle.Financas.Tests.Repositories.Repositories
     public class AccountRepositoryTests : BaseRepositoryTest
     {
         private IAccountRepository _accountRepository;
-
-        [TestInitialize]
-        public void ResetDatabase()
+        
+        public AccountRepositoryTests()
         {
             ConfigureContext();
             _accountRepository = new AccountRepository(_controleFinancasContext);

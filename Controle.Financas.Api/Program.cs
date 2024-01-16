@@ -1,3 +1,4 @@
+using Controle.Financas.Buiseness.UseCases.Users.AddUser;
 using Controle.Financas.EFConfiguration.Startups;
 using Controle.Financas.Infra.Contexts;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,9 @@ builder.Services.AddEntityFramework(builder.Configuration);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Add MediatR
+builder.Services.AddMediatR(c => c.RegisterServicesFromAssembly(typeof(AddUserCommand).Assembly));
 
 var app = builder.Build();
 
