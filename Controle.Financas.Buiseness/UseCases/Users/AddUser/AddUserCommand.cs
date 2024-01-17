@@ -1,6 +1,7 @@
 ﻿using Controle.Financas.Domain.DTOs.Users;
 using Controle.Financas.Domain.Interfaces.Repositories;
 using Controle.Financas.Shared.Enums;
+using Controle.Financas.Shared.Models;
 using Controle.Financas.Shared.Services;
 using MediatR;
 using System;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Controle.Financas.Buiseness.UseCases.Users.AddUser
 {
-    public class AddUserCommand : IRequest<UserResponse>
+    public class AddUserCommand : IRequest<ApiResult<UserResponse>>
     {
         public required string FullName { get; set; }
         public required string Email { get; set; }
@@ -27,15 +28,28 @@ namespace Controle.Financas.Buiseness.UseCases.Users.AddUser
             };
         }
 
-        internal class AddUserCommandHandler(IUserRepository userRepository) : IRequestHandler<AddUserCommand, UserResponse>
+        internal class AddUserCommandHandler(IUserRepository userRepository) : IRequestHandler<AddUserCommand, ApiResult<UserResponse>>
         {
             private readonly IUserRepository _userRepository = userRepository;
 
-            public async Task<UserResponse> Handle(AddUserCommand request, CancellationToken cancellationToken)
+            public async Task<ApiResult<UserResponse>> Handle(AddUserCommand request, CancellationToken cancellationToken)
             {
-                UserResponse user = await _userRepository.InsertUserAsync(request);
+                var response = new ApiResult<UserResponse>();
 
-                return user ?? throw ErrorMessageService.GetException(EErrorType.InternalServerError, "Error on inserting new User");
+                try
+                {
+                    UserResponse user = await _userRepository.InsertUserAsync(request);
+                    if (user != null)
+                        response.SetData(user);
+                    else
+                        response.AddError(ErrorMessageService.GetErrorMessage(EErrorType.InternalServerError, "Error on inserting new User"));
+                        return response;
+                }
+                catch (Exception ex)
+                {
+                    response.AddError(ErrorMessageService.GetErrorMessage(EErrorType.InternalServerError, ex.Message));
+                    return response;
+                }
             }
         }
     }

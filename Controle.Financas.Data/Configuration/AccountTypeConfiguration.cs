@@ -1,4 +1,6 @@
-﻿namespace Controle.Financas.Infra.Configuration
+﻿using Controle.Financas.Domain.DTOs.AccountTypes;
+
+namespace Controle.Financas.Infra.Configuration
 {
     public class AccountTypeConfiguration : UserEntityBaseConfiguration<AccountType>
     {
@@ -20,6 +22,12 @@
                 .WithOne(x => x.AccountType)
                 .HasForeignKey(x => x.AccountTypeId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasData(
+                new AccountType(new AddDefaultAccountTypeDto { Name = "Conta Corrente" }),
+                new AccountType(new AddDefaultAccountTypeDto { Name = "Conta Poupança" }),
+                new AccountType(new AddDefaultAccountTypeDto { Name = "Conta Salário" }));
+
         }
     }
 }
