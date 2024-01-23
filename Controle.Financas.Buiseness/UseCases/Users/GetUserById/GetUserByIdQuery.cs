@@ -21,15 +21,14 @@ namespace Controle.Financas.Buiseness.UseCases.Users.GetUserById
 
             public async Task<ApiResult<UserResponse>> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
             {   
-                var user = await _userRepository.GetUserByIdAsync(request.Id);
+                var apiResult = new ApiResult<UserResponse>();
+                await apiResult.ExecuteAsync(
+                    func: async () => await _userRepository.GetUserByIdAsync(request.Id),
+                    errorOnNull: true,
+                    customErrorMessage: "User not found"
+                );
 
-                var response = new ApiResult<UserResponse>();
-                if(user != null)
-                    response.SetData(user);
-                else
-                    response.AddError(ErrorMessageService.GetErrorMessage(EErrorType.NotFound, "User not found"));
-
-                return response;
+                return apiResult;
             }
         }
     }

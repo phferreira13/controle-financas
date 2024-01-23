@@ -7,15 +7,10 @@ using Controle.Financas.Shared.Services;
 
 namespace Controle.Financas.EFConfiguration.Repositories
 {
-    public class AccountTypeRepository : IAccountTypeRepository
+    public class AccountTypeRepository(ControleFinancasContext context) : IAccountTypeRepository
     {
-        private readonly DbSet<AccountType> _dbSet;
-        private readonly ControleFinancasContext _context;
-        public AccountTypeRepository(ControleFinancasContext context)
-        {
-            _dbSet = context.Set<AccountType>();
-            _context = context;
-        }
+        private readonly DbSet<AccountType> _dbSet = context.Set<AccountType>();
+        private readonly ControleFinancasContext _context = context;
 
         public async Task<AccountType?> GetByIdAsync(int id)
         {
@@ -32,9 +27,12 @@ namespace Controle.Financas.EFConfiguration.Repositories
             return await _dbSet.FirstOrDefaultAsync(at => at.UserId == userId);
         }
 
-        public async Task<IEnumerable<AccountType>> GetAllAsync()
+        public async Task<IEnumerable<AccountType>> GetAllAsync(bool ingnoreDeleted = true)
         {
-            return await _dbSet.ToListAsync();
+            var query = _dbSet.AsQueryable();
+            if (ingnoreDeleted)
+                query = query.Where(at => at.Status != EStatus.Deleted);
+            return await query.ToListAsync();
         }
 
         public async Task<AccountType> AddAsync(AddAccountTypeDto accountType)
@@ -55,9 +53,9 @@ namespace Controle.Financas.EFConfiguration.Repositories
             return updatedAccountType;
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task<AccountType> DeleteAsync(int id)
         {
-            await ChangeStatus(id, EStatus.Deleted);
+            return await ChangeStatus(id, EStatus.Deleted);
         }
 
         public async Task<AccountType> ChangeStatus(int id, EStatus status)

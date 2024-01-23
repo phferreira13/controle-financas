@@ -36,22 +36,13 @@ namespace Controle.Financas.Buiseness.UseCases.Users.UpdateUser
 
             public async Task<ApiResult<UserResponse>> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
             {
-                var response = new ApiResult<UserResponse>();
+                var apiResult = new ApiResult<UserResponse>();
 
-                try
-                {
-                    UserResponse user = await _userRepository.UpdateUserAsync(request);
-                    if (user != null)
-                        response.SetData(user);
-                    else
-                        response.AddError(ErrorMessageService.GetErrorMessage(EErrorType.InternalServerError, "Error on updating User"));
-                        return response;
-                }
-                catch (Exception ex)
-                {
-                    response.AddError(ex.Message);
-                    return response;
-                }
+                return await apiResult.ExecuteAsync(
+                    func: async () => await _userRepository.UpdateUserAsync(request),
+                    errorOnNull: true,
+                    customErrorMessage: "Error on inserting new User"
+                );
             }
         }
     }

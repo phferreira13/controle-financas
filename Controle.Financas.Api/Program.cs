@@ -24,6 +24,7 @@ using (var scope = app.Services.CreateScope())
 
     var context = services.GetRequiredService<ControleFinancasContext>();
     context.Database.Migrate();
+    context.LoadAccountTypes();
 }
 
 // Configure the HTTP request pipeline.

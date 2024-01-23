@@ -21,25 +21,13 @@ namespace Controle.Financas.Buiseness.UseCases.Users.DeleteUser
 
             public async Task<ApiResult<UserResponse>> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
             {
-                var response = new ApiResult<UserResponse>();
+                var apiResult = new ApiResult<UserResponse>();
 
-                try
-                {
-                    UserResponse user = await _userRepository.DeleteUserAsync(request.Id);
-                    if (user == null)
-                        response.AddError(ErrorMessageService.GetErrorMessage(EErrorType.InternalServerError, "Error on deleting User"));
-                    else
-                        response.SetData(user);
-
-                    return response;
-                }
-                catch (Exception ex)
-                {
-                    response.AddError(ex.Message);
-                    return response;
-                }
-
-
+                return await apiResult.ExecuteAsync(
+                    func: async () => await _userRepository.DeleteUserAsync(request.Id),
+                    errorOnNull: true,
+                    customErrorMessage: "Error on deleting User"
+                );
             }
         }
     }

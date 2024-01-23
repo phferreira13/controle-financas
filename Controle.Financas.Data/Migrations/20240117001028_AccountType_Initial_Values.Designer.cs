@@ -3,6 +3,7 @@ using System;
 using Controle.Financas.Infra.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Controle.Financas.EFConfiguration.Migrations
 {
     [DbContext(typeof(ControleFinancasContext))]
-    partial class ControleFinancasContextModelSnapshot : ModelSnapshot
+    [Migration("20240117001028_AccountType_Initial_Values")]
+    partial class AccountType_Initial_Values
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.0");
@@ -54,7 +57,7 @@ namespace Controle.Financas.EFConfiguration.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Accounts", (string)null);
+                    b.ToTable("Accounts");
                 });
 
             modelBuilder.Entity("Controle.Financas.Domain.Models.AccountType", b =>
@@ -86,7 +89,7 @@ namespace Controle.Financas.EFConfiguration.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("AccountsTypes", (string)null);
+                    b.ToTable("AccountsTypes");
                 });
 
             modelBuilder.Entity("Controle.Financas.Domain.Models.User", b =>
@@ -118,7 +121,7 @@ namespace Controle.Financas.EFConfiguration.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("Controle.Financas.Domain.Models.Account", b =>

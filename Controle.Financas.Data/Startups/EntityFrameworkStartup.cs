@@ -12,6 +12,7 @@ namespace Controle.Financas.EFConfiguration.Startups
             {
                 options.UseSqlite(configuration.GetConnectionString("DefaultConnection"));
             });
+
             services.AddRepositories();
         }
     }

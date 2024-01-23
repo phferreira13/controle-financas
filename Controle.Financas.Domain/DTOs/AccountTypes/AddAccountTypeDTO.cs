@@ -1,8 +1,8 @@
 ﻿namespace Controle.Financas.Domain.DTOs.AccountTypes
 {
-    public class AddAccountTypeDto
+    public class AddAccountTypeDto(string name, int userId)
     {
-        public required string Name { get; set; }
-        public int UserId { get; set; }
+        public string Name { get; set; } = name;
+        public int UserId { get; set; } = userId;
     }
 }

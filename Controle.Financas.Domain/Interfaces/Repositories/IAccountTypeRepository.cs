@@ -9,10 +9,10 @@ namespace Controle.Financas.Domain.Interfaces.Repositories
         Task<AccountType?> GetByIdAsync(int id);
         Task<AccountType?> GetByNameAsync(string name);
         Task<AccountType?> GetByUserIdAsync(int userId);
-        Task<IEnumerable<AccountType>> GetAllAsync();
+        Task<IEnumerable<AccountType>> GetAllAsync(bool ingnoreDeleted = true);
         Task<AccountType> AddAsync(AddAccountTypeDto accountType);
         Task<AccountType> UpdateAsync(UpdateAccountTypeDto accountType);
-        Task DeleteAsync(int id);
+        Task<AccountType> DeleteAsync(int id);
         Task<AccountType> ChangeStatus(int id, EStatus status);
 
     }

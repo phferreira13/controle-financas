@@ -23,11 +23,6 @@ namespace Controle.Financas.Infra.Configuration
                 .HasForeignKey(x => x.AccountTypeId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder.HasData(
-                new AccountType(new AddDefaultAccountTypeDto { Name = "Conta Corrente" }),
-                new AccountType(new AddDefaultAccountTypeDto { Name = "Conta Poupança" }),
-                new AccountType(new AddDefaultAccountTypeDto { Name = "Conta Salário" }));
-
         }
     }
 }
