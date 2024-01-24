@@ -27,13 +27,21 @@ namespace Controle.Financas.EFConfiguration.Repositories
             return await _dbSet.FirstOrDefaultAsync(a => a.Name == name);
         }
 
-        public async Task<IEnumerable<Account>> GetAllAsync()
+        public async Task<IEnumerable<Account>> GetAllAsync(bool ignreDeleted = true)
         {
-            return await _dbSet.ToListAsync();
+            var query = _dbSet.AsQueryable();
+            if (ignreDeleted)
+                query = query.Where(a => a.Status != EStatus.Deleted);
+            return await query.ToListAsync();
         }
 
-        public async Task<IEnumerable<Account>> GetAllByUserIdAsync(int userId)
+        public async Task<IEnumerable<Account>> GetAllByUserIdAsync(int userId, bool ignreDeleted = true)
         {
+            var query = _dbSet.AsQueryable();
+            if (ignreDeleted)
+                query = query.Where(a => a.Status != EStatus.Deleted);
+
+
             return await _dbSet.Where(a => a.UserId == userId).ToListAsync();
         }
 
@@ -54,12 +62,13 @@ namespace Controle.Financas.EFConfiguration.Repositories
             return updatedAccount;
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task<Account> DeleteAsync(int id)
         {
             var account = await _dbSet.FindAsync(id) ?? throw ErrorMessageService.GetException(EErrorType.NotFound, "Account");
             account.SetStatus(EStatus.Deleted);
             _dbSet.Update(account);
             await _context.SaveChangesAsync();
+            return account;
         }
     }
 }
