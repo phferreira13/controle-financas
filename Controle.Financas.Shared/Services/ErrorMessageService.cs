@@ -1,11 +1,6 @@
-﻿using Controle.Financas.Shared.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AccountService.Shared.Enums;
 
-namespace Controle.Financas.Shared.Services
+namespace AccountService.Shared.Services
 {
     public static class ErrorMessageService
     {
@@ -16,7 +11,7 @@ namespace Controle.Financas.Shared.Services
         public static string GetErrorMessage(EErrorType errorType, string? message = null)
         {
             var errorMessage = GetDefaultErrorMessage(errorType);
-            if(message != null)
+            if (message != null)
             {
                 errorMessage += $" - {message}";
             }

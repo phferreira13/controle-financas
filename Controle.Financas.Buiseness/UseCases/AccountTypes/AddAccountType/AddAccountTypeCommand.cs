@@ -1,16 +1,8 @@
-﻿using Controle.Financas.Domain.DTOs.AccountTypes;
-using Controle.Financas.Domain.Interfaces.Repositories;
-using Controle.Financas.Domain.Models;
-using Controle.Financas.Shared.Enums;
-using Controle.Financas.Shared.Models;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AccountService.Domain.DTOs.AccountTypes;
+using AccountService.Domain.Interfaces.Repositories;
+using AccountService.Shared.Models;
 
-namespace Controle.Financas.Business.AccountTypes.AddAccountType
+namespace AccountService.Business.UseCases.AccountTypes.AddAccountType
 {
     public class AddAccountTypeCommand(string name, int userId) : IRequest<ApiResult<AccountTypeResponse>>
     {
@@ -18,7 +10,7 @@ namespace Controle.Financas.Business.AccountTypes.AddAccountType
         public int UserId { get; set; } = userId;
 
         public static implicit operator AddAccountTypeDto(AddAccountTypeCommand addAccountTypeCommand)
-            => new (addAccountTypeCommand.Name, addAccountTypeCommand.UserId);
+            => new(addAccountTypeCommand.Name, addAccountTypeCommand.UserId);
 
         internal class AddAccountTypeCommandHandler(IAccountTypeRepository accountTypeRepository) : IRequestHandler<AddAccountTypeCommand, ApiResult<AccountTypeResponse>>
         {

@@ -1,7 +1,7 @@
-﻿using Controle.Financas.Domain.DTOs.Users;
-using Controle.Financas.Domain.Models.Base;
+﻿using AccountService.Domain.DTOs.Users;
+using AccountService.Domain.Models.Base;
 
-namespace Controle.Financas.Domain.Models
+namespace AccountService.Domain.Models
 {
     public class User : EntityBase
     {

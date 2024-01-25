@@ -1,4 +1,4 @@
-﻿namespace Controle.Financas.Domain.DTOs.Account
+﻿namespace AccountService.Domain.DTOs.Accounts
 {
     public class AddAccountDto
     {

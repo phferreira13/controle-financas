@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Controle.Financas.Domain.Enums
+namespace AccountService.Domain.Enums
 {
     public enum EStatus
     {

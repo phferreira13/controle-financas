@@ -1,12 +1,7 @@
-﻿using Controle.Financas.Shared.Enums;
-using Controle.Financas.Shared.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AccountService.Shared.Enums;
+using AccountService.Shared.Services;
 
-namespace Controle.Financas.Shared.Models
+namespace AccountService.Shared.Models
 {
     public class ApiResult<T>
     {

@@ -1,4 +1,7 @@
-﻿namespace Controle.Financas.Infra.Configuration
+﻿using AccountService.Domain.Models;
+using AccountService.EFConfiguration.Configuration.Base;
+
+namespace AccountService.EFConfiguration.Configuration
 {
     public class AccountConfiguration : UserEntityBaseConfiguration<Account>
     {

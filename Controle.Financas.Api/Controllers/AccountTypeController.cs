@@ -1,14 +1,14 @@
-﻿using Controle.Financas.Business.AccountTypes;
-using Controle.Financas.Business.AccountTypes.AddAccountType;
-using Controle.Financas.Business.AccountTypes.DeleteAccountType;
-using Controle.Financas.Business.AccountTypes.GetAccountTypeById;
-using Controle.Financas.Business.AccountTypes.GetAccountTypes;
-using Controle.Financas.Business.AccountTypes.UpdateAccountType;
-using Controle.Financas.Shared.Models;
+﻿using AccountService.Business.UseCases.AccountTypes;
+using AccountService.Business.UseCases.AccountTypes.AddAccountType;
+using AccountService.Business.UseCases.AccountTypes.DeleteAccountType;
+using AccountService.Business.UseCases.AccountTypes.GetAccountTypeById;
+using AccountService.Business.UseCases.AccountTypes.GetAccountTypes;
+using AccountService.Business.UseCases.AccountTypes.UpdateAccountType;
+using AccountService.Shared.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Controle.Financas.Api.Controllers
+namespace AccountService.Api.Controllers
 {
     [ApiController]
     [Route("api/account-types")]

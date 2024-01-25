@@ -1,14 +1,14 @@
-﻿using Controle.Financas.Business.Accounts.GetAccountById;
-using Controle.Financas.Business.UseCases.Accounts;
-using Controle.Financas.Business.UseCases.Accounts.AddAccount;
-using Controle.Financas.Business.UseCases.Accounts.DeleteAccount;
-using Controle.Financas.Business.UseCases.Accounts.GetAccounts;
-using Controle.Financas.Business.UseCases.Accounts.UpdateAccount;
-using Controle.Financas.Shared.Models;
+﻿using AccountService.Business.UseCases.Accounts;
+using AccountService.Business.UseCases.Accounts.AddAccount;
+using AccountService.Business.UseCases.Accounts.DeleteAccount;
+using AccountService.Business.UseCases.Accounts.GetAccountById;
+using AccountService.Business.UseCases.Accounts.GetAccounts;
+using AccountService.Business.UseCases.Accounts.UpdateAccount;
+using AccountService.Shared.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Controle.Financas.Api.Controllers
+namespace AccountService.Api.Controllers
 {
     [ApiController]
     [Route("api/account")]

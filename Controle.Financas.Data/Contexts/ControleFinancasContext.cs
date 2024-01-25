@@ -1,6 +1,7 @@
-﻿using Controle.Financas.Domain.DTOs.AccountTypes;
+﻿using AccountService.Domain.DTOs.AccountTypes;
+using AccountService.Domain.Models;
 
-namespace Controle.Financas.Infra.Contexts
+namespace AccountService.EFConfiguration.Contexts
 {
     public class ControleFinancasContext(DbContextOptions<ControleFinancasContext> options) : DbContext(options)
     {
@@ -21,7 +22,7 @@ namespace Controle.Financas.Infra.Contexts
             if (AccountsTypes.Any())
                 return;
 
-            AccountsTypes.Add(new AccountType(new AddDefaultAccountTypeDto { Name = "Conta Corrente" } ));
+            AccountsTypes.Add(new AccountType(new AddDefaultAccountTypeDto { Name = "Conta Corrente" }));
             AccountsTypes.Add(new AccountType(new AddDefaultAccountTypeDto { Name = "Conta Poupança" }));
             AccountsTypes.Add(new AccountType(new AddDefaultAccountTypeDto { Name = "Conta Salário" }));
 

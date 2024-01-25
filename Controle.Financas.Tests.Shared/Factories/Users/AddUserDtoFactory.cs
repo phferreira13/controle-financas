@@ -1,4 +1,6 @@
-﻿namespace Controle.Financas.Tests.Shared.Factories.Users
+﻿using AccountService.Domain.DTOs.Users;
+
+namespace AccountService.Tests.Shared.Factories.Users
 {
     public class AddUserDtoFactory
     {

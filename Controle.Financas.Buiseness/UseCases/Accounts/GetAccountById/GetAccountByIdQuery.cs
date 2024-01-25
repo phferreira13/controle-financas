@@ -1,9 +1,8 @@
-﻿using Controle.Financas.Business.UseCases.Accounts;
-using Controle.Financas.Domain.Interfaces.Repositories;
-using Controle.Financas.Shared.Models;
-using MediatR;
+﻿using AccountService.Business.UseCases.Accounts;
+using AccountService.Domain.Interfaces.Repositories;
+using AccountService.Shared.Models;
 
-namespace Controle.Financas.Business.Accounts.GetAccountById
+namespace AccountService.Business.UseCases.Accounts.GetAccountById
 {
     public class GetAccountByIdQuery : IRequest<ApiResult<AccountResponse>>
     {

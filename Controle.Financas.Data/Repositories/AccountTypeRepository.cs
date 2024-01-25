@@ -1,11 +1,12 @@
-﻿using Controle.Financas.Domain.DTOs.AccountTypes;
-using Controle.Financas.Domain.Enums;
-using Controle.Financas.Domain.Interfaces.Repositories;
-using Controle.Financas.Infra.Contexts;
-using Controle.Financas.Shared.Enums;
-using Controle.Financas.Shared.Services;
+﻿using AccountService.Domain.DTOs.AccountTypes;
+using AccountService.Domain.Enums;
+using AccountService.Domain.Interfaces.Repositories;
+using AccountService.Domain.Models;
+using AccountService.EFConfiguration.Contexts;
+using AccountService.Shared.Enums;
+using AccountService.Shared.Services;
 
-namespace Controle.Financas.EFConfiguration.Repositories
+namespace AccountService.EFConfiguration.Repositories
 {
     public class AccountTypeRepository(ControleFinancasContext context) : IAccountTypeRepository
     {
@@ -45,7 +46,7 @@ namespace Controle.Financas.EFConfiguration.Repositories
 
         public async Task<AccountType> UpdateAsync(UpdateAccountTypeDto accountType)
         {
-            var updatedAccountType = await _dbSet.FindAsync(accountType.Id) 
+            var updatedAccountType = await _dbSet.FindAsync(accountType.Id)
                 ?? throw ErrorMessageService.GetException(EErrorType.NotFound, "AccountType");
             updatedAccountType.Update(accountType);
             _dbSet.Update(updatedAccountType);

@@ -1,4 +1,6 @@
-﻿namespace Controle.Financas.Domain.DTOs.Account
+﻿using AccountService.Domain.DTOs;
+
+namespace AccountService.Domain.DTOs.Accounts
 {
     public class UpdateAccountDto : UpdateDto
     {

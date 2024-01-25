@@ -1,4 +1,4 @@
-﻿namespace Controle.Financas.Domain.DTOs
+﻿namespace AccountService.Domain.DTOs
 {
     public abstract class UpdateDto { }
 }

@@ -21,8 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Controle.Financas.Domain\Controle.Financas.Domain.csproj" />
-    <ProjectReference Include="..\Controle.Financas.Shared\Controle.Financas.Shared.csproj" />
+    <ProjectReference Include="..\Controle.Financas.Domain\AccountService.Domain.csproj" />
+    <ProjectReference Include="..\Controle.Financas.Shared\AccountService.Shared.csproj" />
   </ItemGroup>
 
 </Project>

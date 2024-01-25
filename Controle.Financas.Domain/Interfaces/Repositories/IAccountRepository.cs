@@ -1,7 +1,7 @@
-﻿using Controle.Financas.Domain.DTOs.Account;
-using Controle.Financas.Domain.Models;
+﻿using AccountService.Domain.DTOs.Accounts;
+using AccountService.Domain.Models;
 
-namespace Controle.Financas.Domain.Interfaces.Repositories
+namespace AccountService.Domain.Interfaces.Repositories
 {
     public interface IAccountRepository
     {

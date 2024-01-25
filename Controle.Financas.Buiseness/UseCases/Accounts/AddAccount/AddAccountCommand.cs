@@ -1,10 +1,9 @@
-﻿using Controle.Financas.Business.UseCases.Accounts;
-using Controle.Financas.Domain.DTOs.Account;
-using Controle.Financas.Domain.Interfaces.Repositories;
-using Controle.Financas.Shared.Models;
-using MediatR;
+﻿using AccountService.Business.UseCases.Accounts;
+using AccountService.Domain.DTOs.Accounts;
+using AccountService.Domain.Interfaces.Repositories;
+using AccountService.Shared.Models;
 
-namespace Controle.Financas.Business.UseCases.Accounts.AddAccount
+namespace AccountService.Business.UseCases.Accounts.AddAccount
 {
     public class AddAccountCommand : IRequest<ApiResult<AccountResponse>>
     {

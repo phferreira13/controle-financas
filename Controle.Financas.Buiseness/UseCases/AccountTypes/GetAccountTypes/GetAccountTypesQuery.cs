@@ -1,15 +1,10 @@
-﻿using Controle.Financas.Domain.Interfaces.Repositories;
-using Controle.Financas.Shared.Models;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AccountService.Business.UseCases.AccountTypes;
+using AccountService.Domain.Interfaces.Repositories;
+using AccountService.Shared.Models;
 
-namespace Controle.Financas.Business.AccountTypes.GetAccountTypes
+namespace AccountService.Business.UseCases.AccountTypes.GetAccountTypes
 {
-    public class GetAccountTypesQuery: IRequest<ApiResult<IEnumerable<AccountTypeResponse>>>
+    public class GetAccountTypesQuery : IRequest<ApiResult<IEnumerable<AccountTypeResponse>>>
     {
         public bool IgnoreDeleted { get; set; }
 

@@ -1,13 +1,8 @@
-﻿using Controle.Financas.Domain.Enums;
-using Controle.Financas.Domain.Extensions;
-using Controle.Financas.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AccountService.Domain.Enums;
+using AccountService.Domain.Extensions;
+using AccountService.Domain.Models;
 
-namespace Controle.Financas.Buiseness.UseCases.Users
+namespace AccountService.Business.UseCases.Users
 {
     public class UserResponse
     {

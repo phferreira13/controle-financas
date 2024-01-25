@@ -1,14 +1,8 @@
-﻿using Controle.Financas.Business.UseCases.Accounts;
-using Controle.Financas.Domain.Interfaces.Repositories;
-using Controle.Financas.Shared.Models;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AccountService.Business.UseCases.Accounts;
+using AccountService.Domain.Interfaces.Repositories;
+using AccountService.Shared.Models;
 
-namespace Controle.Financas.Business.UseCases.Accounts.GetAccounts
+namespace AccountService.Business.UseCases.Accounts.GetAccounts
 {
     public class GetAccountsQuery : IRequest<ApiResult<IEnumerable<AccountResponse>>>
     {

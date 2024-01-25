@@ -1,4 +1,4 @@
-﻿namespace Controle.Financas.Domain.Models.Base
+﻿namespace AccountService.Domain.Models.Base
 {
     public abstract class UserEntityBase : EntityBase
     {

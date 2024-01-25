@@ -1,6 +1,7 @@
-﻿using Controle.Financas.Domain.DTOs.AccountTypes;
+﻿using AccountService.Domain.Models;
+using AccountService.EFConfiguration.Configuration.Base;
 
-namespace Controle.Financas.Infra.Configuration
+namespace AccountService.EFConfiguration.Configuration
 {
     public class AccountTypeConfiguration : UserEntityBaseConfiguration<AccountType>
     {
