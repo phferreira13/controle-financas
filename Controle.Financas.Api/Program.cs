@@ -1,6 +1,6 @@
-using Controle.Financas.Buiseness.UseCases.Users.AddUser;
-using Controle.Financas.EFConfiguration.Startups;
-using Controle.Financas.Infra.Contexts;
+using AccountService.Business.UseCases.Users.AddUser;
+using AccountService.EFConfiguration.Contexts;
+using AccountService.EFConfiguration.Startups;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

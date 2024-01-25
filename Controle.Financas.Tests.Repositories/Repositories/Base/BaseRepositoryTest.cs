@@ -1,17 +1,12 @@
-﻿using Controle.Financas.Infra.Contexts;
+﻿using AccountService.EFConfiguration.Contexts;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Controle.Financas.Tests.Repositories.Repositories.Base
+namespace AccountService.Tests.Repositories.Repositories.Base
 {
     public abstract class BaseRepositoryTest
     {
         protected ControleFinancasContext _controleFinancasContext;
-        
+
         public void ConfigureContext()
         {
             var options = new DbContextOptionsBuilder<ControleFinancasContext>()

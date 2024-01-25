@@ -1,6 +1,8 @@
-﻿using Controle.Financas.Domain.Interfaces.Repositories;
+﻿using AccountService.Business.UseCases.Accounts;
+using AccountService.Domain.Interfaces.Repositories;
+using AccountService.Shared.Models;
 
-namespace Controle.Financas.Business.UseCases.Accounts.DeleteAccount
+namespace AccountService.Business.UseCases.Accounts.DeleteAccount
 {
     public class DeleteAccountCommand : IRequest<ApiResult<AccountResponse>>
     {

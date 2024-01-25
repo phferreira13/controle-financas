@@ -1,16 +1,11 @@
-﻿using Controle.Financas.Domain.Enums;
-using Controle.Financas.EFConfiguration.Repositories;
-using Controle.Financas.Shared.Enums;
-using Controle.Financas.Shared.Services;
-using Controle.Financas.Tests.Repositories.Repositories.Base;
-using Controle.Financas.Tests.Shared.Factories.AccountTypes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AccountService.Domain.Enums;
+using AccountService.EFConfiguration.Repositories;
+using AccountService.Shared.Enums;
+using AccountService.Shared.Services;
+using AccountService.Tests.Repositories.Repositories.Base;
+using AccountService.Tests.Shared.Factories.AccountTypes;
 
-namespace Controle.Financas.Tests.Repositories.Repositories
+namespace AccountService.Tests.Repositories.Repositories
 {
     [TestClass]
     public class AccountTypeRepositoryTests : BaseRepositoryTest

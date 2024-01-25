@@ -1,11 +1,6 @@
-﻿using Controle.Financas.Domain.DTOs.AccountTypes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AccountService.Domain.DTOs.AccountTypes;
 
-namespace Controle.Financas.Tests.Shared.Factories.AccountTypes
+namespace AccountService.Tests.Shared.Factories.AccountTypes
 {
     public class AddAccountTypeDtoFactory
     {

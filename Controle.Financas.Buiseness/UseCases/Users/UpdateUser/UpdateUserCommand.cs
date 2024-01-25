@@ -1,16 +1,9 @@
-﻿using Controle.Financas.Domain.DTOs.Users;
-using Controle.Financas.Domain.Interfaces.Repositories;
-using Controle.Financas.Shared.Enums;
-using Controle.Financas.Shared.Models;
-using Controle.Financas.Shared.Services;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AccountService.Business.UseCases.Users;
+using AccountService.Domain.DTOs.Users;
+using AccountService.Domain.Interfaces.Repositories;
+using AccountService.Shared.Models;
 
-namespace Controle.Financas.Buiseness.UseCases.Users.UpdateUser
+namespace AccountService.Business.UseCases.Users.UpdateUser
 {
     public class UpdateUserCommand : IRequest<ApiResult<UserResponse>>
     {

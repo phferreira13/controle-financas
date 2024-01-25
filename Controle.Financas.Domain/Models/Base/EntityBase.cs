@@ -1,6 +1,6 @@
-﻿using Controle.Financas.Domain.Enums;
+﻿using AccountService.Domain.Enums;
 
-namespace Controle.Financas.Domain.Models.Base
+namespace AccountService.Domain.Models.Base
 {
     public abstract class EntityBase
     {

@@ -1,13 +1,8 @@
-﻿using Controle.Financas.Domain.Interfaces.Repositories;
-using Controle.Financas.Shared.Models;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AccountService.Business.UseCases.AccountTypes;
+using AccountService.Domain.Interfaces.Repositories;
+using AccountService.Shared.Models;
 
-namespace Controle.Financas.Business.AccountTypes.DeleteAccountType
+namespace AccountService.Business.UseCases.AccountTypes.DeleteAccountType
 {
     public class DeleteAccountTypeCommand(int id) : IRequest<ApiResult<AccountTypeResponse>>
     {

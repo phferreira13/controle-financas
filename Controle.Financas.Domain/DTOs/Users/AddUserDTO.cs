@@ -1,4 +1,4 @@
-﻿namespace Controle.Financas.Domain.DTOs.Users
+﻿namespace AccountService.Domain.DTOs.Users
 {
     public class AddUserDto
     {

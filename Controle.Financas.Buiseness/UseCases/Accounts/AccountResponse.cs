@@ -1,6 +1,6 @@
-﻿using Controle.Financas.Domain.Models;
+﻿using AccountService.Domain.Models;
 
-namespace Controle.Financas.Business.UseCases.Accounts
+namespace AccountService.Business.UseCases.Accounts
 {
     public class AccountResponse
     {

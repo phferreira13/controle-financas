@@ -1,13 +1,8 @@
-﻿using Controle.Financas.Domain.Interfaces.Repositories;
-using Controle.Financas.EFConfiguration.Repositories;
+﻿using AccountService.Domain.Interfaces.Repositories;
+using AccountService.EFConfiguration.Repositories;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Controle.Financas.EFConfiguration.Startups
+namespace AccountService.EFConfiguration.Startups
 {
     public static class RepositoriesStartup
     {

@@ -1,8 +1,8 @@
-﻿using Controle.Financas.Infra.Contexts;
+﻿using AccountService.EFConfiguration.Contexts;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Controle.Financas.EFConfiguration.Startups
+namespace AccountService.EFConfiguration.Startups
 {
     public static class EntityFrameworkStartup
     {

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Controle.Financas.Domain.Extensions
+﻿namespace AccountService.Domain.Extensions
 {
     public static class EnumExtensions
     {
@@ -12,12 +6,12 @@ namespace Controle.Financas.Domain.Extensions
         {
             var type = value.GetType();
             var name = Enum.GetName(type, value);
-            if(name == null)
+            if (name == null)
             {
                 return string.Empty;
             }
             var field = type.GetField(name);
-            if(field == null)
+            if (field == null)
             {
                 return string.Empty;
             }

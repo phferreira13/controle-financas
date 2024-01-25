@@ -20,8 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Controle.Financas.Buiseness\Controle.Financas.Business.csproj" />
-    <ProjectReference Include="..\Controle.Financas.Data\Controle.Financas.EFConfiguration.csproj" />
+    <ProjectReference Include="..\Controle.Financas.Buiseness\AccountService.Business.csproj" />
+    <ProjectReference Include="..\Controle.Financas.Data\AccountService.EFConfiguration.csproj" />
   </ItemGroup>
 
 </Project>

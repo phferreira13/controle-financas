@@ -1,8 +1,8 @@
-﻿using Controle.Financas.Domain.DTOs.AccountTypes;
-using Controle.Financas.Domain.Enums;
-using Controle.Financas.Domain.Models;
+﻿using AccountService.Domain.DTOs.AccountTypes;
+using AccountService.Domain.Enums;
+using AccountService.Domain.Models;
 
-namespace Controle.Financas.Domain.Interfaces.Repositories
+namespace AccountService.Domain.Interfaces.Repositories
 {
     public interface IAccountTypeRepository
     {

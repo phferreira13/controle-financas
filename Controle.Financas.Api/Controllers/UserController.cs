@@ -1,14 +1,14 @@
-﻿using Controle.Financas.Buiseness.UseCases.Users;
-using Controle.Financas.Buiseness.UseCases.Users.AddUser;
-using Controle.Financas.Buiseness.UseCases.Users.DeleteUser;
-using Controle.Financas.Buiseness.UseCases.Users.GetUserById;
-using Controle.Financas.Buiseness.UseCases.Users.GetUsers;
-using Controle.Financas.Buiseness.UseCases.Users.UpdateUser;
-using Controle.Financas.Shared.Models;
+﻿using AccountService.Business.UseCases.Users;
+using AccountService.Business.UseCases.Users.AddUser;
+using AccountService.Business.UseCases.Users.DeleteUser;
+using AccountService.Business.UseCases.Users.GetUserById;
+using AccountService.Business.UseCases.Users.GetUsers;
+using AccountService.Business.UseCases.Users.UpdateUser;
+using AccountService.Shared.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Controle.Financas.Api.Controllers
+namespace AccountService.Api.Controllers
 {
     [ApiController]
     [Route("api/users")]

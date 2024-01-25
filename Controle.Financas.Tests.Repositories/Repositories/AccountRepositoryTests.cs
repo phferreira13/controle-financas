@@ -1,21 +1,16 @@
-﻿using Controle.Financas.Domain.Enums;
-using Controle.Financas.Domain.Interfaces.Repositories;
-using Controle.Financas.EFConfiguration.Repositories;
-using Controle.Financas.Tests.Repositories.Repositories.Base;
-using Controle.Financas.Tests.Shared.Factories.Accounts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AccountService.Domain.Enums;
+using AccountService.Domain.Interfaces.Repositories;
+using AccountService.EFConfiguration.Repositories;
+using AccountService.Tests.Repositories.Repositories.Base;
+using AccountService.Tests.Shared.Factories.Accounts;
 
-namespace Controle.Financas.Tests.Repositories.Repositories
+namespace AccountService.Tests.Repositories.Repositories
 {
     [TestClass]
     public class AccountRepositoryTests : BaseRepositoryTest
     {
         private IAccountRepository _accountRepository;
-        
+
         public AccountRepositoryTests()
         {
             ConfigureContext();
@@ -28,7 +23,7 @@ namespace Controle.Financas.Tests.Repositories.Repositories
             // Arrange
             var factory = new AddAccountDtoFactory();
             var account = factory.Generate();
-            
+
             var added = await _accountRepository.AddAsync(account);
 
             // Act

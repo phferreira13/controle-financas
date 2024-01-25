@@ -9,17 +9,17 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["Controle.Financas.Api/Controle.Financas.Api.csproj", "Controle.Financas.Api/"]
-RUN dotnet restore "./Controle.Financas.Api/./Controle.Financas.Api.csproj"
+COPY ["Controle.Financas.Api/AccountService.Api.csproj", "Controle.Financas.Api/"]
+RUN dotnet restore "./Controle.Financas.Api/./AccountService.Api.csproj"
 COPY . .
 WORKDIR "/src/Controle.Financas.Api"
-RUN dotnet build "./Controle.Financas.Api.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet build "./AccountService.Api.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./Controle.Financas.Api.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./AccountService.Api.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Controle.Financas.Api.dll"]
+ENTRYPOINT ["dotnet", "AccountService.Api.dll"]

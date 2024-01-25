@@ -1,11 +1,12 @@
-﻿using Controle.Financas.Domain.DTOs.Account;
-using Controle.Financas.Domain.Enums;
-using Controle.Financas.Domain.Interfaces.Repositories;
-using Controle.Financas.Infra.Contexts;
-using Controle.Financas.Shared.Enums;
-using Controle.Financas.Shared.Services;
+﻿using AccountService.Domain.DTOs.Accounts;
+using AccountService.Domain.Enums;
+using AccountService.Domain.Interfaces.Repositories;
+using AccountService.Domain.Models;
+using AccountService.EFConfiguration.Contexts;
+using AccountService.Shared.Enums;
+using AccountService.Shared.Services;
 
-namespace Controle.Financas.EFConfiguration.Repositories
+namespace AccountService.EFConfiguration.Repositories
 {
     public class AccountRepository : IAccountRepository
     {

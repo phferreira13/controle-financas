@@ -1,14 +1,9 @@
-﻿using Controle.Financas.Domain.DTOs.AccountTypes;
-using Controle.Financas.Domain.Interfaces.Repositories;
-using Controle.Financas.Shared.Models;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AccountService.Business.UseCases.AccountTypes;
+using AccountService.Domain.DTOs.AccountTypes;
+using AccountService.Domain.Interfaces.Repositories;
+using AccountService.Shared.Models;
 
-namespace Controle.Financas.Business.AccountTypes.UpdateAccountType
+namespace AccountService.Business.UseCases.AccountTypes.UpdateAccountType
 {
     public class UpdateAccountTypeCommand : IRequest<ApiResult<AccountTypeResponse>>
     {
@@ -16,7 +11,7 @@ namespace Controle.Financas.Business.AccountTypes.UpdateAccountType
         public string Name { get; set; }
 
         public static implicit operator UpdateAccountTypeDto(UpdateAccountTypeCommand updateAccountTypeCommand)
-            => new (updateAccountTypeCommand.Id, updateAccountTypeCommand.Name);
+            => new(updateAccountTypeCommand.Id, updateAccountTypeCommand.Name);
 
         internal class UpdateAccountTypeCommandHandler(IAccountTypeRepository accountTypeRepository) : IRequestHandler<UpdateAccountTypeCommand, ApiResult<AccountTypeResponse>>
         {

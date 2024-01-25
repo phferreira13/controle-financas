@@ -1,11 +1,6 @@
-﻿using Controle.Financas.Domain.DTOs.Account;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AccountService.Domain.DTOs.Accounts;
 
-namespace Controle.Financas.Tests.Shared.Factories.Accounts
+namespace AccountService.Tests.Shared.Factories.Accounts
 {
     public class AddAccountDtoFactory
     {
@@ -16,7 +11,7 @@ namespace Controle.Financas.Tests.Shared.Factories.Accounts
             _faker = new Faker<AddAccountDto>("pt_BR")
                 .RuleFor(x => x.Name, f => f.Name.JobTitle())
                 .RuleFor(x => x.ActualBalance, f => f.Random.Decimal(min: 0))
-                .RuleFor(x => x.InitialBalance, f => f.Random.Decimal(min: 0))                
+                .RuleFor(x => x.InitialBalance, f => f.Random.Decimal(min: 0))
                 .RuleFor(x => x.AccountTypeId, f => f.Random.Int(min: 1))
                 .RuleFor(x => x.UserId, f => f.Random.Int(min: 1));
         }

@@ -3,35 +3,33 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Controle.Financas.Api", "Controle.Financas.Api\Controle.Financas.Api.csproj", "{A0A62F16-519F-482E-B35E-F8BA3482D27C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccountService.Api", "Controle.Financas.Api\AccountService.Api.csproj", "{A0A62F16-519F-482E-B35E-F8BA3482D27C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{1BFD7D6E-D359-4631-ABC3-B1EE1C661104}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{8B7681E3-790B-428F-9D55-A6EA636B63AE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Controle.Financas.Domain", "Controle.Financas.Domain\Controle.Financas.Domain.csproj", "{849FA833-D4A3-44B4-9105-57E8DEA46AE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccountService.Domain", "Controle.Financas.Domain\AccountService.Domain.csproj", "{849FA833-D4A3-44B4-9105-57E8DEA46AE3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra", "Infra", "{616B45C6-C670-4ED0-9B2C-135BB41F41A5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Buiseness", "Buiseness", "{EADC6455-B599-4543-8A7B-16C0F2D74666}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Controle.Financas.EFConfiguration", "Controle.Financas.Data\Controle.Financas.EFConfiguration.csproj", "{A92291FB-BC8F-4526-AA79-F987642856D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccountService.EFConfiguration", "Controle.Financas.Data\AccountService.EFConfiguration.csproj", "{A92291FB-BC8F-4526-AA79-F987642856D4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{5C3F0419-E1B5-4920-BE57-277BB7BC2AD9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Controle.Financas.Shared", "Controle.Financas.Shared\Controle.Financas.Shared.csproj", "{B4786367-1986-4E6C-BDF7-0F6AC424504F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccountService.Shared", "Controle.Financas.Shared\AccountService.Shared.csproj", "{B4786367-1986-4E6C-BDF7-0F6AC424504F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{CC09F1FB-9C30-4374-AABB-A85CE3F0B13F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Controle.Financas.Tests.Repositories", "Controle.Financas.Tests.Repositories\Controle.Financas.Tests.Repositories.csproj", "{04237462-122F-45E6-BF84-5207F17A0668}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccountService.Tests.Repositories", "Controle.Financas.Tests.Repositories\AccountService.Tests.Repositories.csproj", "{04237462-122F-45E6-BF84-5207F17A0668}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Controle.Financas.Tests.Shared", "Controle.Financas.Tests.Shared\Controle.Financas.Tests.Shared.csproj", "{D3FFBEBE-D93F-4D28-961E-67FCAFA7C1A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccountService.Tests.Shared", "Controle.Financas.Tests.Shared\AccountService.Tests.Shared.csproj", "{D3FFBEBE-D93F-4D28-961E-67FCAFA7C1A0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Controle.Financas.Business", "Controle.Financas.Buiseness\Controle.Financas.Business.csproj", "{6B89D246-5176-4B57-BE9A-755B3AEF511C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccountService.Business", "Controle.Financas.Buiseness\AccountService.Business.csproj", "{6B89D246-5176-4B57-BE9A-755B3AEF511C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AccountService", "AccountService", "{1D71E17C-F8CF-4BDD-86FA-A588AAD13C6D}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExpenseService", "ExpenseService", "{320E26FB-A7A7-43FD-A983-8540A8BBAF9B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

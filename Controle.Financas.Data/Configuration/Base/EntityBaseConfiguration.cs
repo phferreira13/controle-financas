@@ -1,4 +1,6 @@
-﻿namespace Controle.Financas.Infra.Configuration.Base
+﻿using AccountService.Domain.Models.Base;
+
+namespace AccountService.EFConfiguration.Configuration.Base
 {
     public abstract class EntityBaseConfiguration<T> : IEntityTypeConfiguration<T> where T : EntityBase
     {

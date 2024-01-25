@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Controle.Financas.Shared.Enums
+﻿namespace AccountService.Shared.Enums
 {
     public enum EErrorType
     {

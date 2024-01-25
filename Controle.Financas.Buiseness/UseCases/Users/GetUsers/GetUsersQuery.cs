@@ -1,8 +1,8 @@
-﻿using Controle.Financas.Domain.Interfaces.Repositories;
-using Controle.Financas.Shared.Models;
-using MediatR;
+﻿using AccountService.Business.UseCases.Users;
+using AccountService.Domain.Interfaces.Repositories;
+using AccountService.Shared.Models;
 
-namespace Controle.Financas.Buiseness.UseCases.Users.GetUsers
+namespace AccountService.Business.UseCases.Users.GetUsers
 {
     public class GetUsersQuery : IRequest<ApiResult<IEnumerable<UserResponse>>>
     {

@@ -1,11 +1,12 @@
-﻿using Controle.Financas.Domain.DTOs.Users;
-using Controle.Financas.Domain.Enums;
-using Controle.Financas.Domain.Interfaces.Repositories;
-using Controle.Financas.Infra.Contexts;
-using Controle.Financas.Shared.Enums;
-using Controle.Financas.Shared.Services;
+﻿using AccountService.Domain.DTOs.Users;
+using AccountService.Domain.Enums;
+using AccountService.Domain.Interfaces.Repositories;
+using AccountService.Domain.Models;
+using AccountService.EFConfiguration.Contexts;
+using AccountService.Shared.Enums;
+using AccountService.Shared.Services;
 
-namespace Controle.Financas.EFConfiguration.Repositories
+namespace AccountService.EFConfiguration.Repositories
 {
     public class UserRepository(ControleFinancasContext context) : IUserRepository
     {
@@ -45,7 +46,7 @@ namespace Controle.Financas.EFConfiguration.Repositories
 
         public async Task<User> UpdateUserAsync(UpdateUserDto user)
         {
-            var updatedUser = await Users.FindAsync(user.Id) 
+            var updatedUser = await Users.FindAsync(user.Id)
                 ?? throw ErrorMessageService.GetException(EErrorType.NotFound, "User");
             updatedUser.Update(user);
             Users.Update(updatedUser);

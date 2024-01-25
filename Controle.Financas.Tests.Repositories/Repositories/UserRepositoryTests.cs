@@ -1,19 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Controle.Financas.EFConfiguration.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Controle.Financas.Infra.Contexts;
-using Microsoft.EntityFrameworkCore;
-using Controle.Financas.Tests.Shared.Factories.Users;
-using Controle.Financas.Domain.Enums;
-using Controle.Financas.Shared.Services;
-using Controle.Financas.Shared.Enums;
-using Controle.Financas.Tests.Repositories.Repositories.Base;
+﻿using AccountService.Domain.Enums;
+using AccountService.EFConfiguration.Repositories;
+using AccountService.Shared.Enums;
+using AccountService.Shared.Services;
+using AccountService.Tests.Repositories.Repositories.Base;
+using AccountService.Tests.Shared.Factories.Users;
 
-namespace Controle.Financas.EFConfiguration.Repositories.Tests
+namespace AccountService.Tests.Repositories.Repositories
 {
     [TestClass]
     public class UserRepositoryTests : BaseRepositoryTest
@@ -82,7 +74,7 @@ namespace Controle.Financas.EFConfiguration.Repositories.Tests
             // Arrange
             var addUserFactory = new AddUserDtoFactory();
             var users = addUserFactory.BuildList(10);
-            
+
             foreach (var user in users)
             {
                 await _userRepository.InsertUserAsync(user);
@@ -145,7 +137,7 @@ namespace Controle.Financas.EFConfiguration.Repositories.Tests
             var created = _userRepository.InsertUserAsync(user).Result;
 
             // Act
-            
+
             var deleted = await _userRepository.DeleteUserAsync(created.Id);
 
             // Assert
@@ -180,7 +172,7 @@ namespace Controle.Financas.EFConfiguration.Repositories.Tests
             var created = await _userRepository.InsertUserAsync(user);
 
             // Act
-            var result = await _userRepository.GetUserByIdAsync(created.Id+1);
+            var result = await _userRepository.GetUserByIdAsync(created.Id + 1);
 
             // Assert
             Assert.IsNull(result);
@@ -196,7 +188,7 @@ namespace Controle.Financas.EFConfiguration.Repositories.Tests
             var created = await _userRepository.InsertUserAsync(user);
 
             // Act
-            var result = await _userRepository.GetUserByEmailAsync(created.Email+"1");
+            var result = await _userRepository.GetUserByEmailAsync(created.Email + "1");
 
             // Assert
             Assert.IsNull(result);
@@ -212,7 +204,7 @@ namespace Controle.Financas.EFConfiguration.Repositories.Tests
             var created = await _userRepository.InsertUserAsync(user);
 
             // Act
-            var result = await _userRepository.GetUserByEmailAndPasswordAsync(created.Email+"1", created.Password+"1");
+            var result = await _userRepository.GetUserByEmailAndPasswordAsync(created.Email + "1", created.Password + "1");
 
             // Assert
             Assert.IsNull(result);

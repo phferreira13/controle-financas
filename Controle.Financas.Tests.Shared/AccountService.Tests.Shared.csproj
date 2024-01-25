@@ -7,12 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MediatR" Version="12.2.0" />
+    <PackageReference Include="Bogus" Version="35.3.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Controle.Financas.Domain\Controle.Financas.Domain.csproj" />
-    <ProjectReference Include="..\Controle.Financas.Shared\Controle.Financas.Shared.csproj" />
+    <ProjectReference Include="..\Controle.Financas.Domain\AccountService.Domain.csproj" />
   </ItemGroup>
 
 </Project>

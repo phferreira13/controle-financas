@@ -1,11 +1,6 @@
-﻿using Controle.Financas.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AccountService.Domain.Models;
 
-namespace Controle.Financas.Business.AccountTypes
+namespace AccountService.Business.UseCases.AccountTypes
 {
     public class AccountTypeResponse
     {
