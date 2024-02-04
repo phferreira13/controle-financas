@@ -1,6 +1,6 @@
 ﻿using AccountService.Business.UseCases.Users;
 using AccountService.Domain.Interfaces.Repositories;
-using AccountService.Shared.Models;
+using ApiResult.Models;
 
 namespace AccountService.Business.UseCases.Users.GetUsers
 {
@@ -13,12 +13,11 @@ namespace AccountService.Business.UseCases.Users.GetUsers
 
             public async Task<ApiResult<IEnumerable<UserResponse>>> Handle(GetUsersQuery request, CancellationToken cancellationToken)
             {
-                var users = await _userRepository.GetAllUsersAsync(request.IgnoreDeleted);
+                //var users = await _userRepository.GetAllUsersAsync(request.IgnoreDeleted);
 
                 var response = new ApiResult<IEnumerable<UserResponse>>();
-                response.SetData(users.ToList().ConvertAll<UserResponse>(u => u));
-
-                return response;
+                return await response.ExecuteAsync(
+                    async () => (await _userRepository.GetAllUsersAsync(request.IgnoreDeleted)).ToList().ConvertAll<UserResponse>(u => u));
             }
         }
     }

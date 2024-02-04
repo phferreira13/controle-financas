@@ -1,7 +1,7 @@
 ﻿using AccountService.Business.UseCases.Accounts;
 using AccountService.Domain.DTOs.Accounts;
 using AccountService.Domain.Interfaces.Repositories;
-using AccountService.Shared.Models;
+using ApiResult.Models;
 
 namespace AccountService.Business.UseCases.Accounts.AddAccount
 {
@@ -30,11 +30,7 @@ namespace AccountService.Business.UseCases.Accounts.AddAccount
             public async Task<ApiResult<AccountResponse>> Handle(AddAccountCommand request, CancellationToken cancellationToken)
             {
                 var apiResult = new ApiResult<AccountResponse>();
-                return await apiResult.ExecuteAsync(
-                    func: async () => await _accountRepository.AddAsync(request),
-                    errorOnNull: true,
-                    customErrorMessage: "Error on add account"
-                );
+                return await apiResult.ExecuteAsync(async () => await _accountRepository.AddAsync(request), data => data != null);
             }
         }
     }

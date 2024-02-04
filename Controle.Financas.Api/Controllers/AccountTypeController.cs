@@ -4,7 +4,7 @@ using AccountService.Business.UseCases.AccountTypes.DeleteAccountType;
 using AccountService.Business.UseCases.AccountTypes.GetAccountTypeById;
 using AccountService.Business.UseCases.AccountTypes.GetAccountTypes;
 using AccountService.Business.UseCases.AccountTypes.UpdateAccountType;
-using AccountService.Shared.Models;
+using ApiResult.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,7 +18,7 @@ namespace AccountService.Api.Controllers
 
         [HttpGet]
         [ProducesResponseType(typeof(ApiResult<IEnumerable<AccountTypeResponse>>), 200)]
-        public async Task<ApiResult<IEnumerable<AccountTypeResponse>>> GetAccountTypes([FromQuery] GetAccountTypesQuery query)
+        public async Task<ApiResult<List<AccountTypeResponse>>> GetAccountTypes([FromQuery] GetAccountTypesQuery query)
         {
             var response = await _mediator.Send(query);
             return response;

@@ -13,8 +13,11 @@ namespace AccountService.Business.UseCases.Users
         public EStatus Status { get; set; }
         public string StatusDescription { get => Status.GetDescription(); }
 
-        public static implicit operator UserResponse(User user)
+        public static implicit operator UserResponse?(User user)
         {
+            if(user == null)
+                return null;
+
             return new UserResponse
             {
                 Id = user.Id,

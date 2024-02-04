@@ -1,7 +1,7 @@
 ﻿using AccountService.Business.UseCases.Users;
 using AccountService.Domain.DTOs.Users;
 using AccountService.Domain.Interfaces.Repositories;
-using AccountService.Shared.Models;
+using ApiResult.Models;
 
 namespace AccountService.Business.UseCases.Users.UpdateUser
 {
@@ -33,8 +33,7 @@ namespace AccountService.Business.UseCases.Users.UpdateUser
 
                 return await apiResult.ExecuteAsync(
                     func: async () => await _userRepository.UpdateUserAsync(request),
-                    errorOnNull: true,
-                    customErrorMessage: "Error on inserting new User"
+                    validation: data => data != null
                 );
             }
         }

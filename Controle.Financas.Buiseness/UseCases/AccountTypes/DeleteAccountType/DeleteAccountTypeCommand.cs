@@ -1,6 +1,6 @@
 ﻿using AccountService.Business.UseCases.AccountTypes;
 using AccountService.Domain.Interfaces.Repositories;
-using AccountService.Shared.Models;
+using ApiResult.Models;
 
 namespace AccountService.Business.UseCases.AccountTypes.DeleteAccountType
 {
@@ -17,8 +17,7 @@ namespace AccountService.Business.UseCases.AccountTypes.DeleteAccountType
                 var apiResult = new ApiResult<AccountTypeResponse>();
                 return await apiResult.ExecuteAsync(
                     func: async () => await _accountTypeRepository.DeleteAsync(request.Id),
-                    errorOnNull: true,
-                    customErrorMessage: "Error on deleting Account Type"
+                    validation: data => data != null
                 );
             }
         }

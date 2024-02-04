@@ -1,6 +1,6 @@
 ﻿using AccountService.Business.UseCases.Users;
 using AccountService.Domain.Interfaces.Repositories;
-using AccountService.Shared.Models;
+using ApiResult.Models;
 
 namespace AccountService.Business.UseCases.Users.DeleteUser
 {
@@ -18,8 +18,7 @@ namespace AccountService.Business.UseCases.Users.DeleteUser
 
                 return await apiResult.ExecuteAsync(
                     func: async () => await _userRepository.DeleteUserAsync(request.Id),
-                    errorOnNull: true,
-                    customErrorMessage: "Error on deleting User"
+                    validation: data => data != null
                 );
             }
         }

@@ -1,6 +1,7 @@
 ﻿using AccountService.Business.UseCases.Accounts;
 using AccountService.Domain.Interfaces.Repositories;
-using AccountService.Shared.Models;
+using AccountService.Domain.Models;
+using ApiResult.Models;
 
 namespace AccountService.Business.UseCases.Accounts.GetAccounts
 {
@@ -17,11 +18,11 @@ namespace AccountService.Business.UseCases.Accounts.GetAccounts
             {
                 var apiResult = new ApiResult<IEnumerable<AccountResponse>>();
 
-                var accounts = await _accountRepository.GetAllByUserIdAsync(request.UserId, request.IgnoreDeleted);
-                var response = accounts.Select(x => (AccountResponse)x);
-
-                apiResult.SetData(response);
-
+                await apiResult.ExecuteAsync(
+                    func: async () => 
+                        (await _accountRepository.GetAllByUserIdAsync(request.UserId, request.IgnoreDeleted))
+                        .ToList().ConvertAll<AccountResponse>(x => x)
+                );
                 return apiResult;
             }
         }

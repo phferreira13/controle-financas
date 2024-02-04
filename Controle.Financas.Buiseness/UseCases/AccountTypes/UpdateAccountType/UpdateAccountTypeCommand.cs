@@ -1,7 +1,7 @@
 ﻿using AccountService.Business.UseCases.AccountTypes;
 using AccountService.Domain.DTOs.AccountTypes;
 using AccountService.Domain.Interfaces.Repositories;
-using AccountService.Shared.Models;
+using ApiResult.Models;
 
 namespace AccountService.Business.UseCases.AccountTypes.UpdateAccountType
 {
@@ -22,8 +22,7 @@ namespace AccountService.Business.UseCases.AccountTypes.UpdateAccountType
                 var apiResult = new ApiResult<AccountTypeResponse>();
                 return await apiResult.ExecuteAsync(
                     func: async () => await _accountTypeRepository.UpdateAsync(request),
-                    errorOnNull: true,
-                    customErrorMessage: "Error on updating Account Type"
+                    validation: data => data != null
                 );
             }
         }

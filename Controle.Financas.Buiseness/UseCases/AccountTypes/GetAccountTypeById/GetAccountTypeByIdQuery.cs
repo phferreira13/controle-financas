@@ -1,6 +1,5 @@
-﻿using AccountService.Business.UseCases.AccountTypes;
-using AccountService.Domain.Interfaces.Repositories;
-using AccountService.Shared.Models;
+﻿using AccountService.Domain.Interfaces.Repositories;
+using ApiResult.Models;
 
 namespace AccountService.Business.UseCases.AccountTypes.GetAccountTypeById
 {
@@ -22,8 +21,7 @@ namespace AccountService.Business.UseCases.AccountTypes.GetAccountTypeById
                 var apiResult = new ApiResult<AccountTypeResponse>();
                 return await apiResult.ExecuteAsync(
                     func: async () => await _accountTypeRepository.GetByIdAsync(request.Id),
-                    errorOnNull: true,
-                    customErrorMessage: "Account type not found"
+                    validation: data => data != null
                     );
             }
         }

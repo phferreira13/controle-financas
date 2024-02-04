@@ -4,7 +4,7 @@ using AccountService.Business.UseCases.Accounts.DeleteAccount;
 using AccountService.Business.UseCases.Accounts.GetAccountById;
 using AccountService.Business.UseCases.Accounts.GetAccounts;
 using AccountService.Business.UseCases.Accounts.UpdateAccount;
-using AccountService.Shared.Models;
+using ApiResult.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 

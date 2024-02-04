@@ -1,6 +1,6 @@
 ﻿using AccountService.Domain.DTOs.AccountTypes;
 using AccountService.Domain.Interfaces.Repositories;
-using AccountService.Shared.Models;
+using ApiResult.Models;
 
 namespace AccountService.Business.UseCases.AccountTypes.AddAccountType
 {
@@ -22,8 +22,7 @@ namespace AccountService.Business.UseCases.AccountTypes.AddAccountType
 
                 return await apiResult.ExecuteAsync(
                     func: async () => await _accountTypeRepository.AddAsync(request),
-                    errorOnNull: true,
-                    customErrorMessage: "Error on inserting new Account Type"
+                    validation: data => data != null
                     );
             }
         }

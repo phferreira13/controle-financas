@@ -1,6 +1,6 @@
 ﻿using AccountService.Business.UseCases.Users;
 using AccountService.Domain.Interfaces.Repositories;
-using AccountService.Shared.Models;
+using ApiResult.Models;
 
 namespace AccountService.Business.UseCases.Users.GetUserById
 {
@@ -17,8 +17,7 @@ namespace AccountService.Business.UseCases.Users.GetUserById
                 var apiResult = new ApiResult<UserResponse>();
                 await apiResult.ExecuteAsync(
                     func: async () => await _userRepository.GetUserByIdAsync(request.Id),
-                    errorOnNull: true,
-                    customErrorMessage: "User not found"
+                    validation: data => data != null
                 );
 
                 return apiResult;
