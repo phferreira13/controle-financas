@@ -6,15 +6,14 @@ namespace AccountService.Domain.Models
     public class Account : UserEntityBase
     {
         public string Name { get; private set; }
-        public decimal InitialBalance { get; private set; }
+        public decimal InitialBalance { get; private set; } = 0;
         public decimal ActualBalance { get; private set; } = 0;
         public int AccountTypeId { get; private set; }
         public virtual AccountType? AccountType { get; private set; }
 
-        private Account(string name, decimal initialBalance, int accountTypeId)
+        private Account(string name, int accountTypeId)
         {
             Name = name;
-            InitialBalance = initialBalance;
             AccountTypeId = accountTypeId;
         }
 
