@@ -15,7 +15,7 @@ namespace AccountService.Business.UseCases.Users
 
         public static implicit operator UserResponse?(User user)
         {
-            if(user == null)
+            if (user == null)
                 return null;
 
             return new UserResponse

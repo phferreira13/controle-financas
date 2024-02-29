@@ -1,6 +1,6 @@
 ﻿using AccountService.Domain.Interfaces.Repositories;
-using AccountService.EFConfiguration.Repositories;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 namespace AccountService.EFConfiguration.Startups
 {
@@ -8,9 +8,16 @@ namespace AccountService.EFConfiguration.Startups
     {
         public static void AddRepositories(this IServiceCollection services)
         {
-            services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IAccountTypeRepository, AccountTypeRepository>();
-            services.AddScoped<IAccountRepository, AccountRepository>();
+            var assembly = Assembly.GetExecutingAssembly();
+
+            var repositoryTypes = assembly.GetTypes()
+                .Where(t => t.GetInterfaces().Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IRepository<>)) && !t.IsAbstract && !t.IsInterface);
+
+            foreach (var type in repositoryTypes)
+            {
+                var interfaceType = type.GetInterfaces().First(i => i.Name == $"I{type.Name}");
+                services.AddScoped(interfaceType, type);
+            }
         }
     }
 }

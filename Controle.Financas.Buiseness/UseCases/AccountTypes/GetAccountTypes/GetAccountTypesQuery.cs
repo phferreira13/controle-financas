@@ -1,5 +1,4 @@
-﻿using AccountService.Business.UseCases.AccountTypes;
-using AccountService.Domain.Interfaces.Repositories;
+﻿using AccountService.Domain.Interfaces.Repositories;
 using ApiResult.Models;
 
 namespace AccountService.Business.UseCases.AccountTypes.GetAccountTypes
@@ -17,7 +16,7 @@ namespace AccountService.Business.UseCases.AccountTypes.GetAccountTypes
                 var accountTypes = await _accountTypeRepository.GetAllAsync(request.IgnoreDeleted);
                 var response = new ApiResult<List<AccountTypeResponse>>();
                 return await response.ExecuteAsync(() => Task.Run(() => accountTypes.ToList().ConvertAll<AccountTypeResponse>(at => at)));
-                 
+
             }
         }
     }

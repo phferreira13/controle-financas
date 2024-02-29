@@ -1,5 +1,4 @@
-﻿using AccountService.Business.UseCases.AccountTypes;
-using AccountService.Domain.Interfaces.Repositories;
+﻿using AccountService.Domain.Interfaces.Repositories;
 using ApiResult.Models;
 
 namespace AccountService.Business.UseCases.AccountTypes.DeleteAccountType

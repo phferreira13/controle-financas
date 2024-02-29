@@ -4,7 +4,7 @@ using AccountService.Domain.Models;
 
 namespace AccountService.Domain.Interfaces.Repositories
 {
-    public interface IAccountTypeRepository
+    public interface IAccountTypeRepository : IRepository<AccountType>
     {
         Task<AccountType?> GetByIdAsync(int id);
         Task<AccountType?> GetByNameAsync(string name);

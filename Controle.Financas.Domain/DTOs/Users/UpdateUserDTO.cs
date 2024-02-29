@@ -1,6 +1,4 @@
-﻿using AccountService.Domain.DTOs;
-
-namespace AccountService.Domain.DTOs.Users
+﻿namespace AccountService.Domain.DTOs.Users
 {
     public class UpdateUserDto : UpdateDto
     {
