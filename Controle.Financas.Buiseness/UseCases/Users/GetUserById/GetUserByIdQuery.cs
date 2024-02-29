@@ -1,5 +1,4 @@
-﻿using AccountService.Business.UseCases.Users;
-using AccountService.Domain.Interfaces.Repositories;
+﻿using AccountService.Domain.Interfaces.Repositories;
 using ApiResult.Models;
 
 namespace AccountService.Business.UseCases.Users.GetUserById

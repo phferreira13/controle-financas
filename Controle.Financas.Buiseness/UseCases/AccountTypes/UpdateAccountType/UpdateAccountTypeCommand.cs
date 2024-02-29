@@ -1,5 +1,4 @@
-﻿using AccountService.Business.UseCases.AccountTypes;
-using AccountService.Domain.DTOs.AccountTypes;
+﻿using AccountService.Domain.DTOs.AccountTypes;
 using AccountService.Domain.Interfaces.Repositories;
 using ApiResult.Models;
 

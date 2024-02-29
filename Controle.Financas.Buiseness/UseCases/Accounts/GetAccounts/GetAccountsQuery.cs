@@ -1,6 +1,4 @@
-﻿using AccountService.Business.UseCases.Accounts;
-using AccountService.Domain.Interfaces.Repositories;
-using AccountService.Domain.Models;
+﻿using AccountService.Domain.Interfaces.Repositories;
 using ApiResult.Models;
 
 namespace AccountService.Business.UseCases.Accounts.GetAccounts
@@ -19,7 +17,7 @@ namespace AccountService.Business.UseCases.Accounts.GetAccounts
                 var apiResult = new ApiResult<IEnumerable<AccountResponse>>();
 
                 await apiResult.ExecuteAsync(
-                    func: async () => 
+                    func: async () =>
                         (await _accountRepository.GetAllByUserIdAsync(request.UserId, request.IgnoreDeleted))
                         .ToList().ConvertAll<AccountResponse>(x => x)
                 );

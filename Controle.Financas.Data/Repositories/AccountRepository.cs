@@ -1,5 +1,6 @@
 ﻿using AccountService.Domain.DTOs.Accounts;
 using AccountService.Domain.Enums;
+using AccountService.Domain.Interfaces.Filters;
 using AccountService.Domain.Interfaces.Repositories;
 using AccountService.Domain.Models;
 using AccountService.EFConfiguration.Contexts;
@@ -70,6 +71,16 @@ namespace AccountService.EFConfiguration.Repositories
             _dbSet.Update(account);
             await _context.SaveChangesAsync();
             return account;
+        }
+
+        public Task<Account?> GetOneByFilter(IFilter<Account> filter)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<Account>> GetAllByFilter(IFilter<Account> filter)
+        {
+            throw new NotImplementedException();
         }
     }
 }

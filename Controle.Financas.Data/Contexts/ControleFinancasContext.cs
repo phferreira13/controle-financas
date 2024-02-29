@@ -8,6 +8,7 @@ namespace AccountService.EFConfiguration.Contexts
         public DbSet<User> Users { get; set; }
         public DbSet<AccountType> AccountsTypes { get; set; }
         public DbSet<Account> Accounts { get; set; }
+        public DbSet<ExpenseType> ExpenseTypes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

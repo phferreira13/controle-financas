@@ -3,7 +3,7 @@ using AccountService.Domain.Models;
 
 namespace AccountService.Domain.Interfaces.Repositories
 {
-    public interface IAccountRepository
+    public interface IAccountRepository : IRepository<Account>
     {
         Task<Account?> GetByIdAsync(int id);
         Task<Account?> GetByNameAsync(string name);
