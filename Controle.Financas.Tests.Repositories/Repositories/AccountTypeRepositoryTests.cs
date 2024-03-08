@@ -1,4 +1,5 @@
 ﻿using AccountService.Domain.Enums;
+using AccountService.Domain.Filters.AccountTypes;
 using AccountService.EFConfiguration.Repositories;
 using AccountService.Shared.Enums;
 using AccountService.Shared.Services;
@@ -76,9 +77,10 @@ namespace AccountService.Tests.Repositories.Repositories
             // Arrange
             var accountType = new AddAccountTypeDtoFactory().Generate();
             var accountTypeAdded = await _accountTypeRepository.AddAsync(accountType);
+            var filter = new AccountTypeFilterFactory().WithId(accountTypeAdded.Id).Generate();
 
             // Act
-            var accountTypeGetById = await _accountTypeRepository.GetByIdAsync(accountTypeAdded.Id);
+            var accountTypeGetById = await _accountTypeRepository.GetOneByFilter(filter);
 
             // Assert
             Assert.IsNotNull(accountTypeGetById);
@@ -93,8 +95,10 @@ namespace AccountService.Tests.Repositories.Repositories
             var accountType = new AddAccountTypeDtoFactory().Generate();
             var accountTypeAdded = await _accountTypeRepository.AddAsync(accountType);
 
+            var filter = new AccountTypeFilterFactory().WithUserId(accountTypeAdded.UserId.Value).Generate();
+
             // Act
-            var accountTypeGetByUserId = await _accountTypeRepository.GetByUserIdAsync(accountTypeAdded.UserId.Value);
+            var accountTypeGetByUserId = await _accountTypeRepository.GetOneByFilter(filter);
 
             // Assert
             Assert.IsNotNull(accountTypeGetByUserId);
@@ -110,10 +114,10 @@ namespace AccountService.Tests.Repositories.Repositories
             foreach (var accountType in newAccountTypes)
             {
                 await _accountTypeRepository.AddAsync(accountType);
-            }
+            }            
 
             // Act
-            var accountTypes = await _accountTypeRepository.GetAllAsync();
+            var accountTypes = await _accountTypeRepository.GetAllByFilter(new AccountTypeFilter());
 
             // Assert
             Assert.IsNotNull(accountTypes);

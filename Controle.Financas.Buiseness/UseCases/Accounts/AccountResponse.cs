@@ -15,6 +15,8 @@ namespace AccountService.Business.UseCases.Accounts
 
         public static implicit operator AccountResponse(Account account)
         {
+            if (account == null) return null;
+
             return new AccountResponse
             {
                 Id = account.Id,

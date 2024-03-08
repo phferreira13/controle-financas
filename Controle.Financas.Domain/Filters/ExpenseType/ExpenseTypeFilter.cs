@@ -4,13 +4,13 @@ using AccountService.Domain.Models;
 
 namespace AccountService.Domain.Filters
 {
-    public class ExpenseTypeFilter(string? name, string? description, int? userId, int? id, List<EStatus>? status) : IFilter<ExpenseType>
+    public class ExpenseTypeFilter : IFilter<ExpenseType>
     {
-        public string? Name { get; set; } = name;
-        public string? Description { get; set; } = description;
-        public int? UserId { get; set; } = userId;
-        public int? Id { get; set; } = id;
-        public List<EStatus>? Status { get; set; } = status;
+        public string? Name { get; set; }
+        public string? Description { get; set; }
+        public int? UserId { get; set; }
+        public int? Id { get; set; }
+        public List<EStatus>? Status { get; set; }
 
         public IQueryable<ExpenseType> Apply(IQueryable<ExpenseType> query)
         {
