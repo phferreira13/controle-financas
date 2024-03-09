@@ -1,13 +1,30 @@
-﻿using AccountService.Domain.Filters.Users;
+﻿using AccountService.Domain.Enums;
+using AccountService.Domain.Filters.Users;
 using AccountService.Domain.Interfaces.Repositories;
 using ApiResult.Models;
+using AutoFilterQuery.Attributes;
+using AutoFilterQuery.Enums;
 
 namespace AccountService.Business.UseCases.Users.GetUsers
 {
     public class GetUsersQuery : IRequest<ApiResult<IEnumerable<UserResponse>>>
     {
-        public bool IgnoreDeleted { get; set; }
-        public static implicit operator UserFilter(GetUsersQuery query) => new() { IgnoreDeleted = query.IgnoreDeleted };
+        public string? FullName { get; set; }
+        public string? Email { get; set; }
+        public string? Password { get; set; }
+        public int? Id { get; set; }
+        public IEnumerable<EStatus>? Status { get; set; }
+        public bool IgnoreDeleted { get; set; } = true;
+
+        public static implicit operator UserFilter(GetUsersQuery query) => new() 
+        { 
+            FullName = query.FullName,
+            Email = query.Email,
+            Password = query.Password,
+            Id = query.Id,
+            IgnoreDeleted = query.IgnoreDeleted,
+            Status = query.Status
+        };
 
         internal class GetUsersQueryHandler(IUserRepository userRepository) : IRequestHandler<GetUsersQuery, ApiResult<IEnumerable<UserResponse>>>
         {

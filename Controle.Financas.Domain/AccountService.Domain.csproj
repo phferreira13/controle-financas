@@ -10,4 +10,9 @@
     <Folder Include="Interfaces\Repositories\Base\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Libs\FilterQuery\AutoFilterQuery.csproj" />
+    <ProjectReference Include="..\Controle.Financas.Shared\AccountService.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,4 +1,5 @@
-﻿using AccountService.Domain.Filters.AccountTypes;
+﻿using AccountService.Domain.Enums;
+using AccountService.Domain.Filters.AccountTypes;
 using AccountService.Domain.Interfaces.Repositories;
 using ApiResult.Models;
 
@@ -6,10 +7,23 @@ namespace AccountService.Business.UseCases.AccountTypes.GetAccountTypes
 {
     public class GetAccountTypesQuery : IRequest<ApiResult<List<AccountTypeResponse>>>
     {
+        public string? Name { get; set; }
+        public bool? IsDefault { get; set; }
+        public int? Id { get; set; }
+        public int? UserId { get; set; }
+        public IEnumerable<EStatus>? Status { get; set; }
         public bool IgnoreDeleted { get; set; }
         public static implicit operator AccountTypeFilter(GetAccountTypesQuery query)
         {
-            return new AccountTypeFilter { IgnoreDeleted = query.IgnoreDeleted };
+            return new() 
+            {
+                Name = query.Name,
+                IsDefault = query.IsDefault,
+                Id = query.Id,
+                UserId = query.UserId,
+                Status = query.Status,
+                IgnoreDeleted = query.IgnoreDeleted
+            };
         }
 
         internal class GetAccountTypesQueryHandler(IAccountTypeRepository accountTypeRepository) : IRequestHandler<GetAccountTypesQuery, ApiResult<List<AccountTypeResponse>>>

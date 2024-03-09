@@ -1,6 +1,9 @@
 ﻿using AccountService.Domain.Enums;
 using AccountService.Domain.Interfaces.Filters;
 using AccountService.Domain.Models;
+using AutoFilterQuery.Attributes;
+using AutoFilterQuery.Enums;
+using AutoFilterQuery.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,25 +12,24 @@ using System.Threading.Tasks;
 
 namespace AccountService.Domain.Filters.Users
 {
-    public class UserFilter : IFilter<User>
+    public class UserFilter : FilterQuery<User>, IFilter<User>
     {
+        [Filtered(ECompareRule.Like)]
         public string? FullName { get; set; }
+        [Filtered(ECompareRule.Like)]
         public string? Email { get; set; }
+        [Filtered(ignoreCase: false)]
         public string? Password { get; set; }
+        [Filtered]
         public int? Id { get; set; }
+
+
         public IEnumerable<EStatus>? Status { get; set; }
         public bool IgnoreDeleted { get; set; } = true;
 
         public IQueryable<User> Apply(IQueryable<User> query)
         {
-            if (Id.HasValue)
-                query = query.Where(u => u.Id == Id);
-            if (!string.IsNullOrEmpty(FullName))
-                query = query.Where(u => u.FullName.Contains(FullName));
-            if (!string.IsNullOrEmpty(Email))
-                query = query.Where(u => u.Email.Contains(Email));
-            if (!string.IsNullOrEmpty(Password))
-                query = query.Where(u => u.Password.Contains(Password));
+            query = ApplyAttributeFilters(query);
             if (Status != null && Status.Any())
                 query = query.Where(u => Status.Contains(u.Status));
             if (IgnoreDeleted)
