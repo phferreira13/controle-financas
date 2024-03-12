@@ -9,33 +9,10 @@ using AccountService.Shared.Services;
 
 namespace AccountService.EFConfiguration.Repositories
 {
-    public class UserRepository(ControleFinancasContext context) : IUserRepository
+    public class UserRepository(ControleFinancasContext context) : BaseRepository<User>(context.Users), IUserRepository
     {
         private readonly DbSet<User> Users = context.Users;
         private readonly ControleFinancasContext _context = context;
-
-        public async Task<User?> GetUserByIdAsync(int id)
-        {
-            return await Users.FindAsync(id);
-        }
-
-        public async Task<User?> GetUserByEmailAsync(string email)
-        {
-            return await Users.FirstOrDefaultAsync(u => u.Email == email);
-        }
-
-        public async Task<User?> GetUserByEmailAndPasswordAsync(string email, string password)
-        {
-            return await Users.FirstOrDefaultAsync(u => u.Email == email && u.Password == password);
-        }
-
-        public async Task<IEnumerable<User>> GetAllUsersAsync(bool ingnoreDeleted = true)
-        {
-            var query = Users.AsQueryable();
-            if (ingnoreDeleted)
-                query = query.Where(u => u.Status != EStatus.Deleted);
-            return await query.ToListAsync();
-        }
 
         public async Task<User> InsertUserAsync(AddUserDto user)
         {
@@ -68,16 +45,6 @@ namespace AccountService.EFConfiguration.Repositories
             Users.Update(user);
             await _context.SaveChangesAsync();
             return user;
-        }
-
-        public Task<User?> GetOneByFilter(IFilter<User> filter)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<User>> GetAllByFilter(IFilter<User> filter)
-        {
-            throw new NotImplementedException();
         }
     }
 }

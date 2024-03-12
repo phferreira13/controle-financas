@@ -8,7 +8,7 @@ namespace AccountService.EFConfiguration.Configuration.Base
         {
             base.Configure(builder);
 
-            builder.Property(x => x.UserId);
+            builder.Property(x => x.UserId).IsRequired(false);
 
             builder.HasOne(x => x.User)
                 .WithMany()

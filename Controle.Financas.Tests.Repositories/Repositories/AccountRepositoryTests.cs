@@ -1,4 +1,5 @@
 ﻿using AccountService.Domain.Enums;
+using AccountService.Domain.Filters.Accounts;
 using AccountService.Domain.Interfaces.Repositories;
 using AccountService.EFConfiguration.Repositories;
 using AccountService.Tests.Repositories.Repositories.Base;
@@ -93,7 +94,7 @@ namespace AccountService.Tests.Repositories.Repositories
             // Act
             await _accountRepository.DeleteAsync(accountAdded.Id);
 
-            var accountDeleted = await _accountRepository.GetByIdAsync(accountAdded.Id);
+            var accountDeleted = await _accountRepository.GetOneByFilter(new AccountFilter { Id = accountAdded.Id });
 
             // Assert
             Assert.IsNotNull(accountDeleted);

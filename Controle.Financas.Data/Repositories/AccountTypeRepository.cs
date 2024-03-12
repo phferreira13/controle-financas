@@ -9,33 +9,11 @@ using AccountService.Shared.Services;
 
 namespace AccountService.EFConfiguration.Repositories
 {
-    public class AccountTypeRepository(ControleFinancasContext context) : IAccountTypeRepository
+    public class AccountTypeRepository(ControleFinancasContext context) 
+        : BaseRepository<AccountType>(context.AccountsTypes), IAccountTypeRepository
     {
         private readonly DbSet<AccountType> _dbSet = context.Set<AccountType>();
         private readonly ControleFinancasContext _context = context;
-
-        public async Task<AccountType?> GetByIdAsync(int id)
-        {
-            return await _dbSet.FindAsync(id);
-        }
-
-        public async Task<AccountType?> GetByNameAsync(string name)
-        {
-            return await _dbSet.FirstOrDefaultAsync(at => at.Name == name);
-        }
-
-        public async Task<AccountType?> GetByUserIdAsync(int userId)
-        {
-            return await _dbSet.FirstOrDefaultAsync(at => at.UserId == userId);
-        }
-
-        public async Task<IEnumerable<AccountType>> GetAllAsync(bool ingnoreDeleted = true)
-        {
-            var query = _dbSet.AsQueryable();
-            if (ingnoreDeleted)
-                query = query.Where(at => at.Status != EStatus.Deleted);
-            return await query.ToListAsync();
-        }
 
         public async Task<AccountType> AddAsync(AddAccountTypeDto accountType)
         {
@@ -68,16 +46,6 @@ namespace AccountService.EFConfiguration.Repositories
             _dbSet.Update(accountType);
             await _context.SaveChangesAsync();
             return accountType;
-        }
-
-        public Task<AccountType?> GetOneByFilter(IFilter<AccountType> filter)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<AccountType>> GetAllByFilter(IFilter<AccountType> filter)
-        {
-            throw new NotImplementedException();
         }
     }
 }

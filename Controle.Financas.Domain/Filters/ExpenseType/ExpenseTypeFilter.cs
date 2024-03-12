@@ -1,27 +1,29 @@
 ﻿using AccountService.Domain.Enums;
 using AccountService.Domain.Interfaces.Filters;
 using AccountService.Domain.Models;
+using AutoFilterQuery.Attributes;
+using AutoFilterQuery.Enums;
+using AutoFilterQuery.Models;
 
 namespace AccountService.Domain.Filters
 {
-    public class ExpenseTypeFilter(string? name, string? description, int? userId, int? id, List<EStatus>? status) : IFilter<ExpenseType>
+    public class ExpenseTypeFilter : FilterQuery<ExpenseType>, IFilter<ExpenseType>
     {
-        public string? Name { get; set; } = name;
-        public string? Description { get; set; } = description;
-        public int? UserId { get; set; } = userId;
-        public int? Id { get; set; } = id;
-        public List<EStatus>? Status { get; set; } = status;
+        [Filtered(ECompareRule.Like)]
+        public string? Name { get; set; }
+        [Filtered(ECompareRule.Like)]
+        public string? Description { get; set; }
+        [Filtered]
+        public int? UserId { get; set; }
+        [Filtered]
+        public int? Id { get; set; }
+
+
+        public List<EStatus>? Status { get; set; }
 
         public IQueryable<ExpenseType> Apply(IQueryable<ExpenseType> query)
         {
-            if (!string.IsNullOrEmpty(Name))
-                query = query.Where(x => x.Name.Contains(Name));
-            if (!string.IsNullOrEmpty(Description))
-                query = query.Where(x => x.Description.Contains(Description));
-            if (UserId.HasValue)
-                query = query.Where(x => x.UserId == UserId);
-            if (Id.HasValue)
-                query = query.Where(x => x.Id == Id);
+            query = ApplyAttributeFilters(query);
             if (Status != null && Status.Any())
                 query = query.Where(x => Status.Contains(x.Status));
 
