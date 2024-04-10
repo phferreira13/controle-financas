@@ -37,7 +37,7 @@ namespace AccountService.Business.UseCases.Users.GetUsers
 
                 await apiResult.ExecuteAsync(
                     func: async () => 
-                        (await _userRepository.GetAllByFilter(filter))
+                        (await _userRepository.GetAllByFilterAsync(filter))
                         .ToList()
                         .ConvertAll<UserResponse>(u => u));
 

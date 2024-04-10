@@ -20,7 +20,7 @@ namespace AccountService.Business.UseCases.Users.GetUserById
                 UserFilter filter = request;
 
                 await apiResult.ExecuteAsync(
-                    func: async () => await _userRepository.GetOneByFilter(filter),
+                    func: async () => await _userRepository.GetOneByFilterAsync(filter),
                     validation: data => data != null
                 );
 

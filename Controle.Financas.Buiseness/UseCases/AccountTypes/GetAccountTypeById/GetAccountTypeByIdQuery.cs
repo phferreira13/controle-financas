@@ -27,7 +27,7 @@ namespace AccountService.Business.UseCases.AccountTypes.GetAccountTypeById
                 var apiResult = new ApiResult<AccountTypeResponse>();
                 AccountTypeFilter filter = request;
                 return await apiResult.ExecuteAsync(
-                    func: async () => await _accountTypeRepository.GetOneByFilter(filter),
+                    func: async () => await _accountTypeRepository.GetOneByFilterAsync(filter),
                     validation: data => data is not null
                     );
             }

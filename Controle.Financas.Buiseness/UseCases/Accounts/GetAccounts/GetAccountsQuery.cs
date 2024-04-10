@@ -39,7 +39,7 @@ namespace AccountService.Business.UseCases.Accounts.GetAccounts
 
                 await apiResult.ExecuteAsync(
                     func: async () =>
-                        (await _accountRepository.GetAllByFilter(filter))
+                        (await _accountRepository.GetAllByFilterAsync(filter))
                         .ToList()
                         .ConvertAll<AccountResponse>(x => x)
                 );
