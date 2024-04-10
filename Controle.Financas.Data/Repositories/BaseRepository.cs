@@ -12,14 +12,14 @@ namespace AccountService.EFConfiguration.Repositories
     {
         private readonly DbSet<T> _dbSet = dbSet;
 
-        public Task<List<T>> GetAllByFilter(IFilter<T> filter)
+        public Task<List<T>> GetAllByFilterAsync(IFilter<T> filter)
         {
             var query = _dbSet.AsQueryable();
             query = filter.Apply(query);
             return query.ToListAsync();
         }
 
-        public Task<T?> GetOneByFilter(IFilter<T> filter)
+        public Task<T?> GetOneByFilterAsync(IFilter<T> filter)
         {
             var query = _dbSet.AsQueryable();
             query = filter.Apply(query);

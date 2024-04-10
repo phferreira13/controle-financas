@@ -18,5 +18,12 @@ namespace AccountService.Domain.Models
             Name = addExpenseType.Name;
             Description = addExpenseType.Description;
         }
+
+        public void Update(UpdateExpenseType updateExpenseType)
+        {
+            Name = updateExpenseType.Name;
+            Description = updateExpenseType.Description;
+            UpdateDate();
+        }
     }
 }

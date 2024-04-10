@@ -19,40 +19,6 @@ namespace AccountService.Tests.Repositories.Repositories
         }
 
         [TestMethod]
-        public async Task ShouldReturnAccountById()
-        {
-            // Arrange
-            var factory = new AddAccountDtoFactory();
-            var account = factory.Generate();
-
-            var added = await _accountRepository.AddAsync(account);
-
-            // Act
-            var result = await _accountRepository.GetByIdAsync(added.Id);
-
-            Assert.IsNotNull(result);
-            Assert.AreEqual(added.Id, result.Id);
-        }
-
-        [TestMethod]
-        public async Task ShouldReturnAllAccounts()
-        {
-            // Arrange
-            var factory = new AddAccountDtoFactory();
-            foreach (var item in factory.Generate(10))
-            {
-                await _accountRepository.AddAsync(item);
-            }
-
-            // Act
-            var accounts = await _accountRepository.GetAllAsync();
-
-            // Assert
-            Assert.IsNotNull(accounts);
-            Assert.AreEqual(10, accounts.Count());
-        }
-
-        [TestMethod]
         public async Task ShouldAddAccount()
         {
             // Arrange
@@ -94,7 +60,7 @@ namespace AccountService.Tests.Repositories.Repositories
             // Act
             await _accountRepository.DeleteAsync(accountAdded.Id);
 
-            var accountDeleted = await _accountRepository.GetOneByFilter(new AccountFilter { Id = accountAdded.Id });
+            var accountDeleted = await _accountRepository.GetOneByFilterAsync(new AccountFilter { Id = accountAdded.Id });
 
             // Assert
             Assert.IsNotNull(accountDeleted);

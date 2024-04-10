@@ -23,7 +23,7 @@ namespace AccountService.Business.UseCases.Accounts.GetAccountById
                 AccountFilter filter = request;
 
                 return await apiResult.ExecuteAsync(
-                    func: async () => await _accountRepository.GetOneByFilter(filter),
+                    func: async () => await _accountRepository.GetOneByFilterAsync(filter),
                     validation: data => data != null
                 );
             }

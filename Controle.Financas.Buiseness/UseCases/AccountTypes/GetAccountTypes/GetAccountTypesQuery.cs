@@ -33,7 +33,7 @@ namespace AccountService.Business.UseCases.AccountTypes.GetAccountTypes
             public async Task<ApiResult<List<AccountTypeResponse>>> Handle(GetAccountTypesQuery request, CancellationToken cancellationToken)
             {
                 AccountTypeFilter filter = request;
-                var accountTypes = await _accountTypeRepository.GetAllByFilter(filter);
+                var accountTypes = await _accountTypeRepository.GetAllByFilterAsync(filter);
                 var response = new ApiResult<List<AccountTypeResponse>>
                 {
                     Data = accountTypes.ToList().ConvertAll<AccountTypeResponse>(at => at)

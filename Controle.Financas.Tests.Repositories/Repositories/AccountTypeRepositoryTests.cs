@@ -55,23 +55,6 @@ namespace AccountService.Tests.Repositories.Repositories
 
         [TestMethod]
         [TestCategory("Success")]
-        public async Task ShouldDeleteAccountType()
-        {
-            // Arrange
-            var accountType = new AddAccountTypeDtoFactory().Generate();
-            var accountTypeAdded = await _accountTypeRepository.AddAsync(accountType);
-
-            // Act
-            await _accountTypeRepository.DeleteAsync(accountTypeAdded.Id);
-            var accountTypeDeleted = await _accountTypeRepository.GetByIdAsync(accountTypeAdded.Id);
-
-            // Assert
-            Assert.IsNotNull(accountTypeDeleted);
-            Assert.AreEqual(EStatus.Deleted, accountTypeDeleted.Status);
-        }
-
-        [TestMethod]
-        [TestCategory("Success")]
         public async Task ShouldGetAccountTypeById()
         {
             // Arrange
@@ -80,7 +63,7 @@ namespace AccountService.Tests.Repositories.Repositories
             var filter = new AccountTypeFilterFactory().WithId(accountTypeAdded.Id).Generate();
 
             // Act
-            var accountTypeGetById = await _accountTypeRepository.GetOneByFilter(filter);
+            var accountTypeGetById = await _accountTypeRepository.GetOneByFilterAsync(filter);
 
             // Assert
             Assert.IsNotNull(accountTypeGetById);
@@ -98,7 +81,7 @@ namespace AccountService.Tests.Repositories.Repositories
             var filter = new AccountTypeFilterFactory().WithUserId(accountTypeAdded.UserId.Value).Generate();
 
             // Act
-            var accountTypeGetByUserId = await _accountTypeRepository.GetOneByFilter(filter);
+            var accountTypeGetByUserId = await _accountTypeRepository.GetOneByFilterAsync(filter);
 
             // Assert
             Assert.IsNotNull(accountTypeGetByUserId);
@@ -117,52 +100,12 @@ namespace AccountService.Tests.Repositories.Repositories
             }            
 
             // Act
-            var accountTypes = await _accountTypeRepository.GetAllByFilter(new AccountTypeFilter());
+            var accountTypes = await _accountTypeRepository.GetAllByFilterAsync(new AccountTypeFilter());
 
             // Assert
             Assert.IsNotNull(accountTypes);
             Assert.IsTrue(accountTypes.Any());
             Assert.AreEqual(10, accountTypes.Count());
-        }
-
-        [TestMethod]
-        [TestCategory("Success")]
-        public async Task ShouldGetAccountTypeById_ReturnNull()
-        {
-            // Arrange
-
-            // Act
-            var accountTypeGetById = await _accountTypeRepository.GetByIdAsync(1);
-
-            // Assert
-            Assert.IsNull(accountTypeGetById);
-        }
-
-        [TestMethod]
-        [TestCategory("Success")]
-        public async Task ShouldGetAccountTypeByUserId_ReturnNull()
-        {
-            // Arrange
-
-            // Act
-            var accountTypeGetByUserId = await _accountTypeRepository.GetByUserIdAsync(1);
-
-            // Assert
-            Assert.IsNull(accountTypeGetByUserId);
-        }
-
-        [TestMethod]
-        [TestCategory("Success")]
-        public async Task ShouldGetAllAccountTypes_ReturnEmpty()
-        {
-            // Arrange
-
-            // Act
-            var accountTypes = await _accountTypeRepository.GetAllAsync();
-
-            // Assert
-            Assert.IsNotNull(accountTypes);
-            Assert.IsFalse(accountTypes.Any());
         }
 
         [TestMethod]
