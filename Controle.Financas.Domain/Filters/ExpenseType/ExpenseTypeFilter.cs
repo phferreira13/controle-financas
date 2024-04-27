@@ -24,7 +24,7 @@ namespace AccountService.Domain.Filters
         public IQueryable<ExpenseType> Apply(IQueryable<ExpenseType> query)
         {
             query = ApplyAttributeFilters(query);
-            if (Status != null && Status.Any())
+            if (Status != null && Status.Count != 0)
                 query = query.Where(x => Status.Contains(x.Status));
 
             return query;

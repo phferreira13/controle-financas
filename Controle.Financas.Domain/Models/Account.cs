@@ -10,6 +10,7 @@ namespace AccountService.Domain.Models
         public decimal ActualBalance { get; private set; } = 0;
         public int AccountTypeId { get; private set; }
         public virtual AccountType? AccountType { get; private set; }
+        public virtual ICollection<Expense> Expenses { get; private set; } = new List<Expense>();
 
         private Account(string name, int accountTypeId)
         {

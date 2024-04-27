@@ -10,10 +10,10 @@ namespace AccountService.Business.UseCases.ExpenseTypes
 {
     public class ExpenseTypeResponse(int id, string name, string description, EStatus status)
     {
-        public int Id { get; set; } = id;
-        public string Name { get; set; } = name;
-        public string Description { get; set; } = description;
-        public EStatus Status { get; set; } = status;
+        public int Id { get; private set; } = id;
+        public string Name { get; private set; } = name;
+        public string Description { get; private set; } = description;
+        public EStatus Status { get; private set; } = status;
 
         public static implicit operator ExpenseTypeResponse(ExpenseType expenseType)
         {

@@ -9,6 +9,7 @@ namespace AccountService.EFConfiguration.Contexts
         public DbSet<AccountType> AccountsTypes { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<ExpenseType> ExpenseTypes { get; set; }
+        public DbSet<Expense> Expenses { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

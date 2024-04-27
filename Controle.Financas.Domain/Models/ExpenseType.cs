@@ -6,6 +6,7 @@ namespace AccountService.Domain.Models
     {
         public string Name { get; private set; }
         public string Description { get; private set; }
+        public ICollection<Expense> Expenses { get; private set; } = new List<Expense>();
 
         public ExpenseType(string name, string description)
         {
